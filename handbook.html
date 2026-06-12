@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小羊博士 · 药材功效手册</title><style>
+:root{--red:#ff2442;--soft:#ffe8ec;--ink:#222;--muted:#9a9a9a;--line:#f0f0f0;}
+*{box-sizing:border-box;}
+body{margin:0;background:#faf7f5;color:var(--ink);
+ font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;}
+a{color:inherit;text-decoration:none;}
+header{background:linear-gradient(135deg,#ff2442,#ff6b81);color:#fff;padding:24px 20px;text-align:center;}
+header h1{margin:0;font-size:20px;}
+header p{margin:6px 0 0;font-size:13px;opacity:.92;}
+.wrap{max-width:680px;margin:0 auto;padding:18px;}
+.meta{font-size:12px;color:var(--muted);text-align:center;margin:10px 0 18px;}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:14px 0;}
+.nav a,.nav span{flex:1;text-align:center;font-size:13px;padding:9px 6px;border-radius:20px;
+ border:1px solid var(--line);background:#fff;}
+.nav a.cur{background:var(--red);color:#fff;border-color:var(--red);font-weight:700;}
+.nav span.disabled{color:#ccc;background:#f7f7f7;}
+/* 首页目录卡 */
+.daycard{display:block;background:#fff;border:1px solid var(--line);border-radius:14px;
+ padding:15px 16px;margin-bottom:13px;box-shadow:0 2px 8px rgba(0,0,0,.03);}
+.daycard .d{font-weight:700;font-size:15px;color:var(--red);}
+.daycard .w{font-size:12px;color:var(--muted);margin-left:6px;}
+.daycard .angles{font-size:12px;color:#666;margin-top:8px;line-height:1.7;}
+.daycard .chip{display:inline-block;background:var(--soft);color:#c0394f;border-radius:8px;
+ padding:1px 7px;margin:2px 4px 2px 0;font-size:11px;}
+/* 笔记卡 */
+.note{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:18px;overflow:hidden;
+ box-shadow:0 2px 10px rgba(0,0,0,.03);}
+.nhead{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;background:var(--soft);}
+.tag-angle{font-weight:700;color:var(--red);font-size:13px;}
+.tag-angle .num{background:var(--red);color:#fff;border-radius:10px;padding:1px 8px;margin-right:8px;font-size:12px;}
+.prod{font-size:12px;color:#b56;}
+.nbody{padding:16px;}
+.lbl{font-size:11px;color:var(--muted);margin:0 0 6px;display:flex;justify-content:space-between;align-items:center;}
+.title{font-size:16px;font-weight:700;line-height:1.45;margin-bottom:14px;}
+.content{font-size:14px;line-height:1.95;white-space:pre-wrap;background:#fcfbfa;border-radius:10px;padding:12px;}
+.tags{color:var(--red);font-size:13px;line-height:1.8;margin-top:12px;}
+.cover{font-size:12px;color:#888;background:#f6f6f6;border-radius:8px;padding:10px;margin-top:12px;}
+.cover b{color:#555;}
+.copy{border:1px solid var(--red);color:var(--red);background:#fff;font-size:12px;
+ padding:4px 12px;border-radius:13px;cursor:pointer;}
+.copy:active{background:var(--red);color:#fff;}
+.copyall{display:block;width:100%;margin-top:12px;background:var(--red);color:#fff;border:none;
+ padding:11px;border-radius:20px;font-size:14px;font-weight:700;cursor:pointer;}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#333;color:#fff;
+ padding:9px 18px;border-radius:18px;font-size:13px;opacity:0;transition:.25s;pointer-events:none;z-index:9;}
+.toast.show{opacity:1;}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:24px;}
+/* 手册页 */
+.banner{background:#fff7e6;border:1px solid #ffe0a3;color:#8a6d3b;border-radius:12px;
+ padding:12px 14px;font-size:12.5px;line-height:1.7;margin-bottom:18px;}
+.hb{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;
+ box-shadow:0 2px 8px rgba(0,0,0,.03);}
+.hb h3{margin:0 0 4px;font-size:16px;}
+.hb .alias{color:var(--red);font-size:12px;margin-bottom:10px;}
+.hb .seg{font-size:13px;line-height:1.75;margin:8px 0;}
+.hb .seg b{display:inline-block;min-width:64px;color:#999;font-weight:600;}
+.hb .pit{background:#fcfbfa;border-radius:8px;padding:8px 10px;font-size:12.5px;color:#555;
+ line-height:1.7;margin-top:4px;}
+.hbtable{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff;border-radius:12px;overflow:hidden;}
+.hbtable th,.hbtable td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;}
+.hbtable th{background:var(--soft);color:#c0394f;}
+.sec-title{font-size:15px;font-weight:700;margin:22px 0 12px;color:var(--ink);}
+.hblink{display:inline-block;background:var(--red);color:#fff;border-radius:18px;
+ padding:8px 16px;font-size:13px;font-weight:700;margin:4px 0 16px;}
+</style></head><body>
+<header><h1>📜 小羊博士 · 药材功效手册</h1>
+<p>从药食同源原材料，看每款产品的底层讲究</p></header>
+<div class="wrap">
+<div class="nav"><a href="index.html" class="cur">📅 返回内容存档</a></div>
+<div class="banner">⚠️ 温馨提示：本品为<b>药食同源食品，不是药</b>。下列「传统功效」仅作食养科普，
+不代表产品具有疾病预防或治疗作用；现代营养信息亦不与疾病防治挂钩。请理性食用、均衡饮食。</div>
+
+<div class="sec-title">🌿 成分逐味拆解</div>
+<div class="hb"><h3>鸡内金</h3><div class="alias">鸡之黄金 / 化石黄金</div><div class="seg"><b>传统</b>味甘性平，归脾、胃、小肠、膀胱经；健胃消食、涩精止遗、通淋化坚。《中国药典》自1963年版收载，传统用于食积胀满、小儿疳积。</div><div class="seg"><b>现代</b>鸡靠砂囊（即鸡内金）研磨食物，消化力极强。含蛋白质（类角蛋白、消化酶）、多糖、多种氨基酸及钙铁锌钾镁等微量元素；现代研究示可改善胃肠动力、增进食欲。</div><div class="seg"><b>食养话术</b></div><div class="pit">· 传统消食健胃的「老把式」，鸡靠它研磨食物，主打一个帮你「消消食」<br>· 中医眼里的「化石黄金」，吃多积食时老辈最爱用它开开胃<br>· 现代研究说它能帮胃肠动起来、增进食欲，难怪叫「鸡之黄金」</div></div><div class="hb"><h3>山楂</h3><div class="alias">消肉食的酸甜高手</div><div class="seg"><b>传统</b>味甘酸性微温，归脾、胃、肝经；消食化积（尤善消肉食油腻积滞）、行气散瘀。</div><div class="seg"><b>现代</b>富含黄酮类、多种有机酸与解脂酶，传统食养里常用于油腻积食后开胃解腻，兼具抗氧化。</div><div class="seg"><b>食养话术</b></div><div class="pit">· 酸甜开胃担当，老祖宗专门用来「消油腻肉食」，吃多了来两颗最对味<br>· 山楂的有机酸+黄酮，开胃解腻还抗氧化，酸酸甜甜停不下来<br>· 「消肉食第一」，大鱼大肉后的天然解腻搭子</div></div><div class="hb"><h3>山药</h3><div class="alias">补脾之最 · 平补不上火</div><div class="seg"><b>传统</b>味甘性平，归脾、肺、肾经；补脾养胃、生津益肺、补肾涩精，被称「补脾之最」，性质平和。</div><div class="seg"><b>现代</b>含黏液蛋白、薯蓣皂苷、淀粉酶等，质地温润，是健脾养胃食养方里的常客。</div><div class="seg"><b>食养话术</b></div><div class="pit">· 出了名的「补脾之最」，平补不燥，脾胃娇气的人最爱的温和食材<br>· 含黏液蛋白质地温润，健脾养胃方里的常客，平补不上火<br>· 山药茯苓一组队，就是养脾胃的经典CP</div></div><div class="hb"><h3>茯苓</h3><div class="alias">利水渗湿之最</div><div class="seg"><b>传统</b>味甘淡性平，归心、肺、脾、肾经；利水渗湿、健脾、宁心，称「利水渗湿之最」。</div><div class="seg"><b>现代</b>主要含茯苓多糖，是经典健脾祛湿食养搭配（如四君子、八珍）里的核心一味。</div><div class="seg"><b>食养话术</b></div><div class="pit">· 祛湿健脾的经典搭子，和山药鸡内金组队，是养脾胃的「黄金三角」<br>· 「利水渗湿之最」，四君子、八珍等老方子里都有它<br>· 茯苓多糖+健脾，湿气重、脾胃弱的人会偏爱的一味</div></div><div class="hb"><h3>陈皮</h3><div class="alias">越陈越香 · 六陈之一</div><div class="seg"><b>传统</b>味苦辛性温，归脾、肺经；理气健脾、燥湿化痰。「六陈」之一，存放越久越受推崇。</div><div class="seg"><b>现代</b>含挥发油、橙皮苷等，传统食养中常用于理气开胃、化解胀闷。</div><div class="seg"><b>食养话术</b></div><div class="pit">· 理气健脾的「越陈越香」，一点点就能让整体口感和顺、不腻不闷<br>· 六陈之一，挥发油带来的清香，帮你把胀闷感顺下去<br>· 广式煲汤都爱放的陈皮，这里用来理气开胃、提味解腻</div></div><div class="hb"><h3>麦芽</h3><div class="alias">专消米面的消食家</div><div class="seg"><b>传统</b>味甘性平，归脾、胃经；消食健胃（善消米面诸果食积）、疏肝。</div><div class="seg"><b>现代</b>含淀粉酶及多种维生素，与山楂、鸡内金常组「消食三剑客」。</div><div class="seg"><b>食养话术</b></div><div class="pit">· 和山楂、鸡内金并称消食好搭档，主攻米面积食，配方里的隐藏功臣<br>· 含淀粉酶，专消米面诸果食积，吃主食多的人懂它的好<br>· 消食三剑客之一，低调但管用</div></div><div class="hb"><h3>红枣</h3><div class="alias">补中益气的甜</div><div class="seg"><b>传统</b>味甘性温，归脾、胃、心经；补中益气、养血安神。</div><div class="seg"><b>现代</b>含糖类、维生素C及多种矿物质，为配方添一抹自然回甘，不靠蔗糖也好吃。</div><div class="seg"><b>食养话术</b></div><div class="pit">· 天然的甜味来源，补中益气，让配方酸甜里多一层温润的底味<br>· 不靠蔗糖也好吃，红枣的自然回甘就是底气<br>· 补中益气养血，给八珍丸添一抹温润的甜</div></div><div class="hb"><h3>益生元（低聚果糖）</h3><div class="alias">肠道好菌的「口粮」</div><div class="seg"><b>传统</b>（现代营养概念，非传统中药）</div><div class="seg"><b>现代</b>低聚果糖(FOS)是研究最充分的益生元之一，是双歧杆菌、乳酸菌等有益菌的「食物」；经发酵产短链脂肪酸，有助维持肠道屏障、调节免疫与血糖血脂。世界胃肠病学组织指南、多项临床研究支持其对肠道菌群的有益作用。</div><div class="seg"><b>食养话术</b></div><div class="pit">· 肠道有益菌的「口粮」，有研究称能帮好菌长得更好，养娃养自己都安心<br>· 低聚果糖FOS是研究最充分的益生元之一，养菌、护肠屏障<br>· WGO指南都点过名的益生元，吃零食顺便养养肠道菌群</div></div><div class="hb"><h3>五黑（黑米·黑芝麻·黑藜麦·黑桑葚·黑枸杞）</h3><div class="alias">黑色入肾 · 五黑能量</div><div class="seg"><b>传统</b>中医认为「黑色入肾」，黑色食材多为平补佳品；五黑同食传统上滋补肝肾、滋阴养血、健脾和胃。</div><div class="seg"><b>现代</b>黑米富含花青素与B族、铁锰硒；黑芝麻富含钙、不饱和脂肪与维E；黑桑葚/黑枸杞花青素含量高、富含VC与锌；黑藜麦是少有的完全蛋白并富含膳食纤维。一口吃进 5 种黑色营养。</div><div class="seg"><b>食养话术</b></div><div class="pit">· 「黑色入肾」的五黑组合，花青素+钙+完全蛋白一口全包<br>· 黑米黑芝麻黑藜麦黑桑葚黑枸杞，一口吃进5种黑色营养<br>· 黑色食材平补不燥，给娃的高钙黑色能量</div></div><div class="hb"><h3>黑芝麻</h3><div class="alias">高钙小能手</div><div class="seg"><b>传统</b>味甘性平，归肝、肾、大肠经；补肝肾、益精血、润肠燥。</div><div class="seg"><b>现代</b>钙含量在常见食材里名列前茅，并含不饱和脂肪酸与维生素E，是天然的补钙好食材。</div><div class="seg"><b>食养话术</b></div><div class="pit">· 天然高钙小能手，香味也是它给的，比单纯加钙片更让人安心<br>· 钙含量在常见食材里名列前茅，还有维E和好脂肪<br>· 黑芝麻补的是看得见的香和钙</div></div><div class="hb"><h3>小米</h3><div class="alias">粮药 · 养胃黄小米</div><div class="seg"><b>传统</b>味甘咸性凉，入肾、脾、胃经；健脾和胃。《本草纲目》载其「益丹田、补虚损、开肠胃」。</div><div class="seg"><b>现代</b>B族维生素丰富（B1可达大米数倍），含8种必需氨基酸与钾锌等矿物质，且属低GI食材。</div><div class="seg"><b>食养话术</b></div><div class="pit">· 老辈口中的「养胃粮药」，低GI、纯米香，肠胃娇气和控糖的人都友好<br>· 《本草纲目》说它「开肠胃、补虚损」，B族维生素是大米的好几倍<br>· 80%小米，低GI又养胃，主食党的安心之选</div></div><div class="hb"><h3>桑葚</h3><div class="alias">花青素之王</div><div class="seg"><b>传统</b>味甘酸性寒，归心、肝、肾经；滋阴补血、生津润燥。</div><div class="seg"><b>现代</b>花青素含量在常见水果里居前（高于蓝莓），富含VC、VE、VK及铁锌，抗氧化能力突出。</div><div class="seg"><b>食养话术</b></div><div class="pit">· 花青素比蓝莓还高的「紫色宝藏」，酸甜好吃又抗氧化<br>· 桑葚滋阴又抗氧化，棒棒糖里的紫色营养担当<br>· VC、铁锌都有，花青素含量在水果里数一数二</div></div><div class="hb"><h3>蓝莓</h3><div class="alias">抗氧化明星</div><div class="seg"><b>传统</b>（现代水果，偏营养概念）性平味甘酸。</div><div class="seg"><b>现代</b>富含花青素与维生素C，是公认的抗氧化明星水果，常被叫「21世纪保健水果」。</div><div class="seg"><b>食养话术</b></div><div class="pit">· 抗氧化明星水果，给棒棒糖添一抹自然莓果酸甜<br>· 「21世纪保健水果」，花青素+VC，吃糖也聪明点<br>· 蓝莓的莓果香+抗氧化，小朋友的快乐更健康一点</div></div><div class="hb"><h3>苹果</h3><div class="alias">果胶开胃</div><div class="seg"><b>传统</b>味甘酸性凉，归脾、胃经；生津、健脾、开胃。</div><div class="seg"><b>现代</b>富含果胶（可溶性膳食纤维）与有机酸，鲜果打浆保留果香，酸甜开胃又添膳食纤维。</div><div class="seg"><b>食养话术</b></div><div class="pit">· 鲜果打浆的酸甜，富含果胶膳食纤维，是八珍丸好开胃的秘密<br>· 苹果的果胶是可溶性膳食纤维，酸甜开胃还添纤维<br>· 30%苹果鲜打，果香酸甜，开胃不靠香精</div></div><div class="hb"><h3>碳酸钙（高钙添加）</h3><div class="alias">看得见的补钙</div><div class="seg"><b>传统</b>（营养强化成分）</div><div class="seg"><b>现代</b>为儿童定制额外添加碳酸钙，搭配益生元帮助钙吸收，让「高钙」不只是说说。</div><div class="seg"><b>食养话术</b></div><div class="pit">· 专门为娃加的钙，还配了益生元帮吸收，补钙这件事不打折<br>· 碳酸钙+益生元的组合，让「高钙」落到实处<br>· 看得见的补钙，给成长期的娃多一重安心</div></div>
+
+<div class="sec-title">🧩 产品 × 药材 · 食养逻辑</div>
+<table class="hbtable"><tr><th>产品</th><th>关键药材</th><th>食养逻辑</th></tr><tr><td>益生元苹果八珍丸</td><td>鸡内金、山楂、山药、茯苓、益生元、苹果</td><td>酸酸甜甜好开胃，软糯版的山楂八珍丸</td></tr><tr><td>山楂鸡内金消消焦饼</td><td>鸡内金、山楂、陈皮</td><td>焦香酥脆又养胃的小鸡饼</td></tr><tr><td>益生元五黑高钙小脆饼</td><td>五黑、黑芝麻、益生元、碳酸钙</td><td>90%五黑的高钙小脆饼，给娃补钙的零食</td></tr><tr><td>缤纷水果山楂棒棒糖</td><td>山楂、桑葚、蓝莓</td><td>山楂含量≥47%的水果棒棒糖，更健康的解馋糖</td></tr><tr><td>黄小米鸡内金香香焦饼</td><td>小米、鸡内金、陈皮</td><td>80%小米的低GI养胃焦饼，咸香版</td></tr><tr><td>山药鸡内金酥酥焦饼</td><td>山药、茯苓、鸡内金、陈皮</td><td>山药茯苓健脾的酥脆焦饼</td></tr></table>
+
+<div class="sec-title">✅ 合规口径速记</div>
+<div class="hb"><div class="seg">
+能说：开胃、解腻、消食、养胃、健脾（传统说法）、配料干净、0添加、低GI、富含某营养素<br>
+不说：治疗 / 治愈 / 根治 / 疗效 / 降三高 / 抗癌 / 提高免疫力（绝对化）/ 替代药物<br>
+涉及中医功效统一加「传统认为 / 老辈常用 / 食养角度」前缀，点到为止。
+</div></div>
+</div>
+<footer>知识仅供科普 · 发布前请人工终审合规 · 由小羊博士内容生成器自动产出</footer>
+</body></html>
