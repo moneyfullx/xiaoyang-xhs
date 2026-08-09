@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小羊博士 · 每日文章（咪蒙体）· 2026-07-31</title><style>
+:root{--red:#ff2442;--soft:#ffe8ec;--ink:#222;--muted:#9a9a9a;--line:#f0f0f0;}
+*{box-sizing:border-box;}
+body{margin:0;background:#faf7f5;color:var(--ink);
+ font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;}
+a{color:inherit;text-decoration:none;}
+header{background:linear-gradient(135deg,#ff2442,#ff6b81);color:#fff;padding:24px 20px;text-align:center;}
+header h1{margin:0;font-size:20px;}
+header p{margin:6px 0 0;font-size:13px;opacity:.92;}
+.wrap{max-width:680px;margin:0 auto;padding:18px;}
+.meta{font-size:12px;color:var(--muted);text-align:center;margin:10px 0 18px;}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:14px 0;}
+.nav a,.nav span{flex:1;text-align:center;font-size:13px;padding:9px 6px;border-radius:20px;
+ border:1px solid var(--line);background:#fff;}
+.nav a.cur{background:var(--red);color:#fff;border-color:var(--red);font-weight:700;}
+.nav span.disabled{color:#ccc;background:#f7f7f7;}
+/* 首页目录卡 */
+.daycard{display:block;background:#fff;border:1px solid var(--line);border-radius:14px;
+ padding:15px 16px;margin-bottom:13px;box-shadow:0 2px 8px rgba(0,0,0,.03);}
+.daycard .d{font-weight:700;font-size:15px;color:var(--red);}
+.daycard .w{font-size:12px;color:var(--muted);margin-left:6px;}
+.daycard .angles{font-size:12px;color:#666;margin-top:8px;line-height:1.7;}
+.daycard .chip{display:inline-block;background:var(--soft);color:#c0394f;border-radius:8px;
+ padding:1px 7px;margin:2px 4px 2px 0;font-size:11px;}
+/* 笔记卡 */
+.note{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:18px;overflow:hidden;
+ box-shadow:0 2px 10px rgba(0,0,0,.03);}
+.nhead{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;background:var(--soft);}
+.tag-angle{font-weight:700;color:var(--red);font-size:13px;}
+.tag-angle .num{background:var(--red);color:#fff;border-radius:10px;padding:1px 8px;margin-right:8px;font-size:12px;}
+.prod{font-size:12px;color:#b56;}
+.imglabel{font-size:11px;color:var(--muted);padding:12px 16px 0;}
+.imgstrip{display:flex;gap:10px;overflow-x:auto;padding:8px 16px 14px;-webkit-overflow-scrolling:touch;}
+.imgstrip a{flex:none;}
+.imgstrip img{height:220px;width:165px;object-fit:cover;border-radius:12px;border:1px solid #eee;
+ box-shadow:0 1px 4px rgba(0,0,0,.06);}
+.nbody{padding:16px;}
+.lbl{font-size:11px;color:var(--muted);margin:0 0 6px;display:flex;justify-content:space-between;align-items:center;}
+.title{font-size:16px;font-weight:700;line-height:1.45;margin-bottom:14px;}
+.content{font-size:14px;line-height:1.95;white-space:pre-wrap;background:#fcfbfa;border-radius:10px;padding:12px;}
+.tags{color:var(--red);font-size:13px;line-height:1.8;margin-top:12px;}
+.cover{font-size:12px;color:#888;background:#f6f6f6;border-radius:8px;padding:10px;margin-top:12px;}
+.cover b{color:#555;}
+.copy{border:1px solid var(--red);color:var(--red);background:#fff;font-size:12px;
+ padding:4px 12px;border-radius:13px;cursor:pointer;}
+.copy:active{background:var(--red);color:#fff;}
+.copyall{display:block;width:100%;margin-top:12px;background:var(--red);color:#fff;border:none;
+ padding:11px;border-radius:20px;font-size:14px;font-weight:700;cursor:pointer;}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#333;color:#fff;
+ padding:9px 18px;border-radius:18px;font-size:13px;opacity:0;transition:.25s;pointer-events:none;z-index:9;}
+.toast.show{opacity:1;}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:24px;}
+/* 手册页 */
+.banner{background:#fff7e6;border:1px solid #ffe0a3;color:#8a6d3b;border-radius:12px;
+ padding:12px 14px;font-size:12.5px;line-height:1.7;margin-bottom:18px;}
+.hb{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;
+ box-shadow:0 2px 8px rgba(0,0,0,.03);}
+.hb h3{margin:0 0 4px;font-size:16px;}
+.hb .alias{color:var(--red);font-size:12px;margin-bottom:10px;}
+.hb .seg{font-size:13px;line-height:1.75;margin:8px 0;}
+.hb .seg b{display:inline-block;min-width:64px;color:#999;font-weight:600;}
+.hb .pit{background:#fcfbfa;border-radius:8px;padding:8px 10px;font-size:12.5px;color:#555;
+ line-height:1.7;margin-top:4px;}
+.hbtable{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff;border-radius:12px;overflow:hidden;}
+.hbtable th,.hbtable td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;}
+.hbtable th{background:var(--soft);color:#c0394f;}
+.sec-title{font-size:15px;font-weight:700;margin:22px 0 12px;color:var(--ink);}
+.hblink{display:inline-block;background:var(--red);color:#fff;border-radius:18px;
+ padding:8px 16px;font-size:13px;font-weight:700;margin:4px 0 16px;}
+
+.mart{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 20px;margin-bottom:20px;}
+.mtitle{color:var(--ink);font-size:21px;margin:0 0 14px;line-height:1.4;}
+.mart p{font-size:15px;line-height:1.95;margin:10px 0;}
+.mart blockquote{border-left:3px solid var(--red);background:#fff6f7;margin:12px 0;padding:8px 14px;color:#a33;border-radius:4px;}
+.mart .seg{color:var(--red);margin-top:16px;}
+.mart hr{border:none;border-top:1px dashed var(--line);margin:16px 0;}</style></head><body>
+<header><h1>📝 小羊博士 · 每日文章（咪蒙体）</h1><p>2026-07-31 · 5 篇情感长文</p></header>
+<div class="wrap">
+<div class="nav"><a href="../index.html" class="cur">📅 返回内容存档</a></div>
+<article class="mart"><h2 class='mtitle'>我妈这辈子最舍得的一次，是给外孙买零食</h2>
+<blockquote>⚠️ 骨架初稿（咪蒙结构模板，建议人工润色成故事）。开启 claude 登录或配 ANTHROPIC_API_KEY 后可自动生成完整爆文。</blockquote>
+<p>**【开篇·直击痛点】**（3段内抓住人，先抛情绪）</p>
+<p>对自己抠、对孙辈舍得的中国式长辈——这大概是很多人心里说不出口的那句话。</p>
+<p>（在这里写一个具体的场景/一段对话/一张聊天截图，让读者一秒对号入座。）</p>
+<p class='seg'><b>【冲突·情绪爆发】</b></p>
+<p>外婆的舍得与心疼。</p>
+<p>（写一个真实的小故事：谁、在什么时候、发生了什么，把&quot;但是/结果/我一看就……&quot;的转折写出来。）</p>
+<blockquote>金句位：把最扎心的一句放这里（短、可转发）。</blockquote>
+<p class='seg'><b>【递进·再来一个故事】</b></p>
+<p>（第二个案例，把情绪推高一层，让读者从&quot;我也是&quot;到&quot;太真实了&quot;。）</p>
+<blockquote>金句位：反转或升华一句。</blockquote>
+<p class='seg'><b>【反转/治愈】</b></p>
+<p>（给一个温暖的落点，不鸡汤：也许我们要的不是完美，而是……）</p>
+<p class='seg'><b>【结尾·自然落点】</b></p>
+<p>让长辈舍得、也吃得放心的一盒。</p>
+<p>（一两句带出理念即可，别像广告——落在&quot;好好照顾自己和家人&quot;的情绪上。）</p>
+<hr>
+<p>选题主题：隔代亲情</p></article><article class="mart"><h2 class='mtitle'>别再给娃买那些&#x27;看起来健康&#x27;的零食了</h2>
+<blockquote>⚠️ 骨架初稿（咪蒙结构模板，建议人工润色成故事）。开启 claude 登录或配 ANTHROPIC_API_KEY 后可自动生成完整爆文。</blockquote>
+<p>**【开篇·直击痛点】**（3段内抓住人，先抛情绪）</p>
+<p>伪健康零食太多——这大概是很多人心里说不出口的那句话。</p>
+<p>（在这里写一个具体的场景/一段对话/一张聊天截图，让读者一秒对号入座。）</p>
+<p class='seg'><b>【冲突·情绪爆发】</b></p>
+<p>教你三招识别伪健康。</p>
+<p>（写一个真实的小故事：谁、在什么时候、发生了什么，把&quot;但是/结果/我一看就……&quot;的转折写出来。）</p>
+<blockquote>金句位：把最扎心的一句放这里（短、可转发）。</blockquote>
+<p class='seg'><b>【递进·再来一个故事】</b></p>
+<p>（第二个案例，把情绪推高一层，让读者从&quot;我也是&quot;到&quot;太真实了&quot;。）</p>
+<blockquote>金句位：反转或升华一句。</blockquote>
+<p class='seg'><b>【反转/治愈】</b></p>
+<p>（给一个温暖的落点，不鸡汤：也许我们要的不是完美，而是……）</p>
+<p class='seg'><b>【结尾·自然落点】</b></p>
+<p>真干净的零食敢摊开配料表。</p>
+<p>（一两句带出理念即可，别像广告——落在&quot;好好照顾自己和家人&quot;的情绪上。）</p>
+<hr>
+<p>选题主题：避雷/硬气宣言</p></article><article class="mart"><h2 class='mtitle'>结婚证给不了你安全感，但一顿好好吃的饭可以</h2>
+<blockquote>⚠️ 骨架初稿（咪蒙结构模板，建议人工润色成故事）。开启 claude 登录或配 ANTHROPIC_API_KEY 后可自动生成完整爆文。</blockquote>
+<p>**【开篇·直击痛点】**（3段内抓住人，先抛情绪）</p>
+<p>安全感来自被好好照顾的日常——这大概是很多人心里说不出口的那句话。</p>
+<p>（在这里写一个具体的场景/一段对话/一张聊天截图，让读者一秒对号入座。）</p>
+<p class='seg'><b>【冲突·情绪爆发】</b></p>
+<p>把爱落到一日三餐和零食上。</p>
+<p>（写一个真实的小故事：谁、在什么时候、发生了什么，把&quot;但是/结果/我一看就……&quot;的转折写出来。）</p>
+<blockquote>金句位：把最扎心的一句放这里（短、可转发）。</blockquote>
+<p class='seg'><b>【递进·再来一个故事】</b></p>
+<p>（第二个案例，把情绪推高一层，让读者从&quot;我也是&quot;到&quot;太真实了&quot;。）</p>
+<blockquote>金句位：反转或升华一句。</blockquote>
+<p class='seg'><b>【反转/治愈】</b></p>
+<p>（给一个温暖的落点，不鸡汤：也许我们要的不是完美，而是……）</p>
+<p class='seg'><b>【结尾·自然落点】</b></p>
+<p>把在意藏进给家人挑的零食里。</p>
+<p>（一两句带出理念即可，别像广告——落在&quot;好好照顾自己和家人&quot;的情绪上。）</p>
+<hr>
+<p>选题主题：条件补偿/家庭</p></article><article class="mart"><h2 class='mtitle'>你越焦虑，娃越不好好吃饭</h2>
+<p>先问一句戳心的：你有多久，没能好好吃完一顿饭了？</p>
+<p>我说的不是你自己的饭。是你端着碗，追在娃屁股后面那一顿。</p>
+<p>上周三晚上，我又输了。</p>
+<p>一碗我炖了四十分钟的南瓜小米粥，娃扒拉两口，把勺子一扔，人跑了。我端着碗站在客厅中间，那一瞬间眼泪差点下来——不是气的，是累的。</p>
+<p>我妈在旁边说了一句：「你越紧张，孩子越不吃。」</p>
+<p>我当时冲她翻了个白眼。可那天半夜，我盯着天花板，突然觉得，这话扎得我睡不着。</p>
+<p class='seg'><b>焦虑是会传染的，尤其从妈妈传给孩子。</b></p>
+<p>我开始回想。每次吃饭，我是什么状态？</p>
+<p>盯着他嘴巴，数着他吃了几口。他慢一点，我催；他不吃，我哄，哄不动就吓——「不吃就不许看动画片」。整张饭桌，像一个我随时准备开庭的法庭，他是被告，我是那个永远不满意的法官。</p>
+<p>换成你是那个孩子，你想吃吗？</p>
+<p>我有个闺蜜，全职妈妈，娃比我家的还挑。她跟我讲过一件事，我到现在都记得。</p>
+<p>她说有段时间她彻底「摆烂」了。不追不喂不催，把饭往那儿一放，「吃就吃，不吃拉倒」。她自己该干嘛干嘛，甚至当着娃的面，自己吃得可香。</p>
+<p>结果你猜怎么着？三天后，那个从来不主动上桌的娃，自己爬上椅子，指着她碗里的东西说：「我也要。」</p>
+<p class='seg'><b>孩子要的从来不是被盯着吃，是想跟你吃一样的、你也爱吃的东西。</b></p>
+<p>那天之后我服了。原来问题从来不在娃身上，在我这张绷得太紧的脸上。</p>
+<p>我做了一件小事：把「吃饭」这件天大的事，降级成一件小事。</p>
+<p>不再把每一口都当成营养 KPI。我开始允许零食存在——但我给自己定了一条线：可以吃零食，但得是我敢自己也跟着吃的那种。</p>
+<p>我翻遍了家里的零食柜，最后留下来的没几样。标准很简单，就一条：**配料表我能一口气念完，而且每一样我都认识。**</p>
+<p>那种糖排在第一位、后面跟着一长串我念不出名字的东西的，全清出去了。留下的，是山楂、山药、小米、鸡内金这些——我小时候我姥姥也会给我吃的东西。</p>
+<p>奇妙的事发生了。当我不再把零食当成「敌人」，娃对饭反而没那么抵触了。</p>
+<p>因为饭桌不再是战场。他饿了会自己找吃的，找到的是干净的；正餐没吃够，我也不再那么慌，因为我知道他嘴里塞的那口，我放心。</p>
+<p class='seg'><b>你把弦松开，孩子才敢靠近。</b></p>
+<p>写到这儿，我想跟每一个在饭桌上快崩溃的妈妈说一句：</p>
+<p>你已经很好了。你炖的每一锅粥，追的每一步，都是爱。只是有时候，爱太用力，会把孩子推远。</p>
+<p>试着松一口气。给娃，也给自己。</p>
+<p>如果你也在给娃挑零食这件事上较过真——翻来覆去看配料表、把「0添加」三个字看了又看——那我们是一路人。</p>
+<p>我现在给娃备零食，就一个念头：**它得干净到，我自己也愿意吃一口。**</p>
+<p>大人和孩子，其实想要的是同一样东西：吃得开心，也吃得安心。</p>
+<p>这一口，别那么焦虑。慢慢来。</p></article><article class="mart"><h2 class='mtitle'>你越焦虑，娃越不好好吃饭</h2>
+<blockquote>⚠️ 骨架初稿（咪蒙结构模板，建议人工润色成故事）。开启 claude 登录或配 ANTHROPIC_API_KEY 后可自动生成完整爆文。</blockquote>
+<p>**【开篇·直击痛点】**（3段内抓住人，先抛情绪）</p>
+<p>焦虑传染，越逼越糟——这大概是很多人心里说不出口的那句话。</p>
+<p>（在这里写一个具体的场景/一段对话/一张聊天截图，让读者一秒对号入座。）</p>
+<p class='seg'><b>【冲突·情绪爆发】</b></p>
+<p>松弛的妈妈养出爱吃饭的娃。</p>
+<p>（写一个真实的小故事：谁、在什么时候、发生了什么，把&quot;但是/结果/我一看就……&quot;的转折写出来。）</p>
+<blockquote>金句位：把最扎心的一句放这里（短、可转发）。</blockquote>
+<p class='seg'><b>【递进·再来一个故事】</b></p>
+<p>（第二个案例，把情绪推高一层，让读者从&quot;我也是&quot;到&quot;太真实了&quot;。）</p>
+<blockquote>金句位：反转或升华一句。</blockquote>
+<p class='seg'><b>【反转/治愈】</b></p>
+<p>（给一个温暖的落点，不鸡汤：也许我们要的不是完美，而是……）</p>
+<p class='seg'><b>【结尾·自然落点】</b></p>
+<p>把零食这件小事变轻松。</p>
+<p>（一两句带出理念即可，别像广告——落在&quot;好好照顾自己和家人&quot;的情绪上。）</p>
+<hr>
+<p>选题主题：育儿悖论</p></article><article class="mart"><h2 class='mtitle'>我把&#x27;养生&#x27;两个字，从体检报告里读懂了</h2>
+<blockquote>⚠️ 骨架初稿（咪蒙结构模板，建议人工润色成故事）。开启 claude 登录或配 ANTHROPIC_API_KEY 后可自动生成完整爆文。</blockquote>
+<p>**【开篇·直击痛点】**（3段内抓住人，先抛情绪）</p>
+<p>年轻时不信养生，报告一出全信了——这大概是很多人心里说不出口的那句话。</p>
+<p>（在这里写一个具体的场景/一段对话/一张聊天截图，让读者一秒对号入座。）</p>
+<p class='seg'><b>【冲突·情绪爆发】</b></p>
+<p>被体检教育后的觉醒。</p>
+<p>（写一个真实的小故事：谁、在什么时候、发生了什么，把&quot;但是/结果/我一看就……&quot;的转折写出来。）</p>
+<blockquote>金句位：把最扎心的一句放这里（短、可转发）。</blockquote>
+<p class='seg'><b>【递进·再来一个故事】</b></p>
+<p>（第二个案例，把情绪推高一层，让读者从&quot;我也是&quot;到&quot;太真实了&quot;。）</p>
+<blockquote>金句位：反转或升华一句。</blockquote>
+<p class='seg'><b>【反转/治愈】</b></p>
+<p>（给一个温暖的落点，不鸡汤：也许我们要的不是完美，而是……）</p>
+<p class='seg'><b>【结尾·自然落点】</b></p>
+<p>养生要趁早，趁还只是嘴馋的时候。</p>
+<p>（一两句带出理念即可，别像广告——落在&quot;好好照顾自己和家人&quot;的情绪上。）</p>
+<hr>
+<p>选题主题：健康觉醒</p></article>
+</div><footer>由小羊博士咪蒙体生成器自动产出 · 发布前请人工终审</footer></body></html>
