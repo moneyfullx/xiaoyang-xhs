@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小羊博士 · 每日文章（咪蒙体）· 2026-08-23</title><style>
+:root{--red:#ff2442;--soft:#ffe8ec;--ink:#222;--muted:#9a9a9a;--line:#f0f0f0;}
+*{box-sizing:border-box;}
+body{margin:0;background:#faf7f5;color:var(--ink);
+ font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;}
+a{color:inherit;text-decoration:none;}
+header{background:linear-gradient(135deg,#ff2442,#ff6b81);color:#fff;padding:24px 20px;text-align:center;}
+header h1{margin:0;font-size:20px;}
+header p{margin:6px 0 0;font-size:13px;opacity:.92;}
+.wrap{max-width:680px;margin:0 auto;padding:18px;}
+.meta{font-size:12px;color:var(--muted);text-align:center;margin:10px 0 18px;}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:14px 0;}
+.nav a,.nav span{flex:1;text-align:center;font-size:13px;padding:9px 6px;border-radius:20px;
+ border:1px solid var(--line);background:#fff;}
+.nav a.cur{background:var(--red);color:#fff;border-color:var(--red);font-weight:700;}
+.nav span.disabled{color:#ccc;background:#f7f7f7;}
+/* 首页目录卡 */
+.daycard{display:block;background:#fff;border:1px solid var(--line);border-radius:14px;
+ padding:15px 16px;margin-bottom:13px;box-shadow:0 2px 8px rgba(0,0,0,.03);}
+.daycard .d{font-weight:700;font-size:15px;color:var(--red);}
+.daycard .w{font-size:12px;color:var(--muted);margin-left:6px;}
+.daycard .angles{font-size:12px;color:#666;margin-top:8px;line-height:1.7;}
+.daycard .chip{display:inline-block;background:var(--soft);color:#c0394f;border-radius:8px;
+ padding:1px 7px;margin:2px 4px 2px 0;font-size:11px;}
+/* 笔记卡 */
+.note{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:18px;overflow:hidden;
+ box-shadow:0 2px 10px rgba(0,0,0,.03);}
+.nhead{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;background:var(--soft);}
+.tag-angle{font-weight:700;color:var(--red);font-size:13px;}
+.tag-angle .num{background:var(--red);color:#fff;border-radius:10px;padding:1px 8px;margin-right:8px;font-size:12px;}
+.prod{font-size:12px;color:#b56;}
+.imglabel{font-size:11px;color:var(--muted);padding:12px 16px 0;}
+.imgstrip{display:flex;gap:10px;overflow-x:auto;padding:8px 16px 14px;-webkit-overflow-scrolling:touch;}
+.imgstrip a{flex:none;}
+.imgstrip img{height:220px;width:165px;object-fit:cover;border-radius:12px;border:1px solid #eee;
+ box-shadow:0 1px 4px rgba(0,0,0,.06);}
+.nbody{padding:16px;}
+.lbl{font-size:11px;color:var(--muted);margin:0 0 6px;display:flex;justify-content:space-between;align-items:center;}
+.title{font-size:16px;font-weight:700;line-height:1.45;margin-bottom:14px;}
+.content{font-size:14px;line-height:1.95;white-space:pre-wrap;background:#fcfbfa;border-radius:10px;padding:12px;}
+.tags{color:var(--red);font-size:13px;line-height:1.8;margin-top:12px;}
+.cover{font-size:12px;color:#888;background:#f6f6f6;border-radius:8px;padding:10px;margin-top:12px;}
+.cover b{color:#555;}
+.copy{border:1px solid var(--red);color:var(--red);background:#fff;font-size:12px;
+ padding:4px 12px;border-radius:13px;cursor:pointer;}
+.copy:active{background:var(--red);color:#fff;}
+.copyall{display:block;width:100%;margin-top:12px;background:var(--red);color:#fff;border:none;
+ padding:11px;border-radius:20px;font-size:14px;font-weight:700;cursor:pointer;}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#333;color:#fff;
+ padding:9px 18px;border-radius:18px;font-size:13px;opacity:0;transition:.25s;pointer-events:none;z-index:9;}
+.toast.show{opacity:1;}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:24px;}
+/* 手册页 */
+.banner{background:#fff7e6;border:1px solid #ffe0a3;color:#8a6d3b;border-radius:12px;
+ padding:12px 14px;font-size:12.5px;line-height:1.7;margin-bottom:18px;}
+.hb{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;
+ box-shadow:0 2px 8px rgba(0,0,0,.03);}
+.hb h3{margin:0 0 4px;font-size:16px;}
+.hb .alias{color:var(--red);font-size:12px;margin-bottom:10px;}
+.hb .seg{font-size:13px;line-height:1.75;margin:8px 0;}
+.hb .seg b{display:inline-block;min-width:64px;color:#999;font-weight:600;}
+.hb .pit{background:#fcfbfa;border-radius:8px;padding:8px 10px;font-size:12.5px;color:#555;
+ line-height:1.7;margin-top:4px;}
+.hbtable{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff;border-radius:12px;overflow:hidden;}
+.hbtable th,.hbtable td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;}
+.hbtable th{background:var(--soft);color:#c0394f;}
+.sec-title{font-size:15px;font-weight:700;margin:22px 0 12px;color:var(--ink);}
+.hblink{display:inline-block;background:var(--red);color:#fff;border-radius:18px;
+ padding:8px 16px;font-size:13px;font-weight:700;margin:4px 0 16px;}
+
+.mart{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 20px;margin-bottom:20px;}
+.mtitle{color:var(--ink);font-size:21px;margin:0 0 14px;line-height:1.4;}
+.mart p{font-size:15px;line-height:1.95;margin:10px 0;}
+.mart blockquote{border-left:3px solid var(--red);background:#fff6f7;margin:12px 0;padding:8px 14px;color:#a33;border-radius:4px;}
+.mart .seg{color:var(--red);margin-top:16px;}
+.mart hr{border:none;border-top:1px dashed var(--line);margin:16px 0;}</style></head><body>
+<header><h1>📝 小羊博士 · 每日文章（咪蒙体）</h1><p>2026-08-23 · 5 篇情感长文</p></header>
+<div class="wrap">
+<div class="nav"><a href="../days/2026-08-23.html">← 2026-08-23 当天10篇</a><a href="../index.html" class="cur">📅 内容存档</a></div>
+<article class="mart" id="art-1"><h2 class='mtitle'>你以为在给娃吃健康零食，其实一直在喂糖</h2>
+<p>先说个反常识的事：你家娃吃的那些&quot;健康零食&quot;，可能糖比你想的多得多。</p>
+<p>我一个朋友，特别注意给孩子控糖。不给喝饮料，不给吃糖果，自认为做得很好。</p>
+<p>结果带娃去做检查，医生看了她的记录，问：孩子平时是不是常吃溶豆、酸奶块、果泥条这些？</p>
+<p>她说是啊，这些不是很健康吗？</p>
+<p>医生笑了笑：这些里面的糖，一点都不少。</p>
+<p>她当场愣住。</p>
+<p class='seg'><b>原来我们防的是那些&quot;看起来就很甜&quot;的糖，却漏掉了那些&quot;藏起来的糖&quot;。</b></p>
+<p>糖这个东西，早就学会了伪装。</p>
+<p>它叫葡萄糖浆的时候，你没认出来；</p>
+<p>它叫麦芽糖、果葡糖浆的时候，你也没认出来；</p>
+<p>它躲在&quot;儿童酸奶&quot;&quot;水果溶豆&quot;&quot;无添加果泥&quot;里，顶着健康的名头，你更是一点防备都没有。</p>
+<p>有些标着&quot;0蔗糖&quot;的零食，你以为控糖了，翻过来一看，没加蔗糖，加了三四种别的糖。</p>
+<p>孩子的味蕾，就是这么一点点被养刁的。吃惯了甜的，就再也看不上清淡的。然后正餐不好好吃，越不吃越馋零食，恶性循环。</p>
+<p class='seg'><b>你以为你在喂&quot;健康&quot;，其实你在悄悄地，把孩子喂进了&quot;嗜甜&quot;的坑里。</b></p>
+<p>那怎么办？总不能什么都不给吃。</p>
+<p>我的办法很笨，但有效：翻到配料表，看糖排在第几位。</p>
+<p>排在前三位的，放下；有一长串&quot;某某糖浆&quot;的，放下。</p>
+<p>留下那些，甜味是水果本身带来的、是食材天然的。比如山楂本身的酸甜，比如小米、山药的那种淡淡的、不刺激的味道。</p>
+<p>孩子一开始可能不买账，觉得&quot;不够甜&quot;。但味蕾是可以慢慢养回来的。清淡吃几周，他反而能尝出食材本来的香。</p>
+<p>我不是要你把糖当成洪水猛兽，一点都不让孩子碰。</p>
+<p>我是想说：**别再被&quot;健康&quot;&quot;无添加&quot;这些词晃了眼。真正的控糖，是你愿意翻到背面，看清它到底加了多少、加的是什么。**</p>
+<p>给娃解馋，可以。但选那些甜得干净、甜得明白的。</p>
+<p>让孩子从小知道：好吃，不一定要靠一堆糖堆出来。</p>
+<p>这是你能给他的、关于&quot;吃&quot;的第一课。</p></article><article class="mart" id="art-2"><h2 class='mtitle'>当妈后，我把最好的都给了娃，除了我自己的胃</h2>
+<p>我给娃的辅食，要现做现磨，营养搭配到克。</p>
+<p>我给娃的零食，翻遍配料表，挑最干净的。</p>
+<p>我给娃的水果，进口的、当季的，贵一点也舍得。</p>
+<p>轮到我自己，是娃剩下的半碗粥，是站在厨房三口扒完的冷饭，是忙起来干脆不吃。</p>
+<p>当妈四年，我把最好的都给了娃。除了，我自己的胃。</p>
+<p>前阵子胃疼得厉害，去做了个检查。医生问我平时怎么吃饭，我一五一十说了。</p>
+<p>他放下笔，说了一句让我鼻子发酸的话：</p>
+<p>&quot;你把孩子照顾得那么好，怎么就不能对自己也好一点？&quot;</p>
+<p>我当时就红了眼眶。</p>
+<p class='seg'><b>因为好像从当妈那天起，&#x27;对自己好&#x27;这四个字，就成了一件需要愧疚的事。</b></p>
+<p>我们太习惯把自己排在最后了。</p>
+<p>老公要吃热的，老人口味要照顾，孩子的每一口都要精心。忙完一圈，自己饿着、凑合着、将就着——都觉得理所当然。</p>
+<p>可身体不会因为你是妈妈，就对你手下留情。</p>
+<p>它会在你顾不上的每一顿饭里，悄悄记账。等有一天疼起来，才发现，欠的债，得一点一点还。</p>
+<p>我认识的妈妈，几乎个个都有点胃的毛病。我们笑称这是&quot;当妈的勋章&quot;。可这勋章，一点都不值得骄傲。</p>
+<p>后来我逼自己改了。</p>
+<p>改变很小：饿了，先吃一口，别等所有人都吃好。包里、工位上，备一点能随手吃、吃下去胃舒服的东西——不是那种吃完更空的膨化零食，是小米、山药做的，温温和和的那种。</p>
+<p>它治不好我这几年落下的毛病。我不指望。</p>
+<p>但至少，在我又一次忙到忘了自己的时候，它提醒我：你也是需要被好好喂养的那个人。</p>
+<p class='seg'><b>姐妹们，你把自己熬垮了，对这个家、对孩子，都不是件好事。</b></p>
+<p>孩子需要的，从来不是一个耗尽了自己的妈妈，是一个还爱自己、还有力气笑的妈妈。</p>
+<p>你给娃挑零食的时候那么用心，也请分一点那份用心，留给你自己。</p>
+<p>饿了就先吃一口。这不是自私。</p>
+<p>这是你能给这个家，最长久的底气。</p></article><article class="mart" id="art-3"><h2 class='mtitle'>一边熬夜一边泡枸杞，是这届年轻人最后的体面</h2>
+<p>我们这代人的养生，是拧巴的。</p>
+<p>凌晨一点，一边刷手机不肯睡，一边往保温杯里丢枸杞。</p>
+<p>外卖点最辣最油的，然后加购一盒护肝片。</p>
+<p>明明黑眼圈重到能挂东西，还坚持敷个面膜，仿佛这样就能抵消。</p>
+<p>朋友管这叫&quot;养生朋克&quot;。我觉得，这是这届年轻人，最后的一点体面。</p>
+<p>体面在哪？</p>
+<p>体面在，我们其实都知道自己在作。知道熬夜伤身，知道外卖不健康，知道再这样下去身体要垮。</p>
+<p>我们只是……停不下来。</p>
+<p>工作停不下来，焦虑停不下来，那种&quot;再刷一会儿&quot;的空虚也停不下来。</p>
+<p>于是养生，成了我们跟自己的一场和解。用枸杞、护肝片、面膜，换一点&quot;我还是在乎自己的&quot;的安慰。</p>
+<p class='seg'><b>说白了，我们不是真的在养生。我们是在用养生的姿势，掩盖不敢好好生活的事实。</b></p>
+<p>这话有点扎心。但扎心的话，往往是真的。</p>
+<p>我不是要来教育你早睡早起、清淡饮食。谁不知道呢。知道，但做不到，这才是成年人的常态。</p>
+<p>我想说的是另一件事：</p>
+<p>既然大改变一时半会儿做不到，那能不能，从一个小到不能再小的地方，真的对自己好一点？</p>
+<p>比如，把凌晨那顿罪恶的外卖，换成一点吃下去不那么有负担的东西。</p>
+<p>比如，把&quot;用力假装养生&quot;，换成&quot;随手真的养一下&quot;。</p>
+<p>我现在工位上、包里，都放着点小东西。饿了、馋了、熬着的时候，来一口。不是枸杞那种&quot;仪式感养生&quot;，是真的吃进去，胃会觉得舒服一点的——小米做的、山楂做的，不刺激，不添负担。</p>
+<p>它救不了我的熬夜，也补不回我的黑眼圈。</p>
+<p>但它是我在一地鸡毛的生活里，能抓住的、一点点真实的温柔。</p>
+<p class='seg'><b>养生朋克没什么不好。至少，它证明我们还没有彻底放弃自己。</b></p>
+<p>只是，别让养生停留在姿势上。</p>
+<p>哪怕做不到早睡，也可以在饿的那一刻，给自己选一口更干净的。</p>
+<p>在你顾不上自己的时候，替你顾一下你自己。</p>
+<p>这，就是体面里，最珍贵的那一点点真。</p></article><article class="mart" id="art-4"><h2 class='mtitle'>把爸妈的体检报告看完，我在客厅坐了一夜</h2>
+<p>上个月，我带爸妈做了次全面体检。</p>
+<p>报告拿回来那晚，他们睡了，我一个人坐在客厅，一页一页看。</p>
+<p>看着看着，就坐到了天亮。</p>
+<p>那些箭头，那些&quot;偏高&quot;&quot;偏低&quot;&quot;建议复查&quot;，像一根根小针，扎在我心上。</p>
+<p>我才后知后觉地意识到：爸妈，是真的老了。</p>
+<p>小时候，他们是家里那座山，好像什么都扛得住。什么时候开始，那座山也有了裂缝，也需要我来撑一撑了？</p>
+<p>我妈那天还笑我：一个体检而已，你紧张什么。</p>
+<p>我没说话。因为我不敢说，我怕的是什么。</p>
+<p class='seg'><b>我们总以为来日方长，总想着&quot;等我有钱了&quot;&quot;等我有空了&quot;再好好孝顺。可报告上那些数字提醒我：时间，其实没那么多了。</b></p>
+<p>那晚我做了个决定：从现在起，实实在在地，对他们好一点。</p>
+<p>不是买昂贵的保健品堆在柜子里——我妈那种人，越贵越舍不得吃，最后都过期。</p>
+<p>是从他们每天要吃、要喝的小事里，一点点渗进去。</p>
+<p>比如，给他们换掉那些高糖高盐的零嘴，备一点养胃的、好嚼的、他们真的愿意吃的东西。</p>
+<p>比如，回家的时候，不再只是塞钱，而是坐下来，陪他们好好吃顿饭。</p>
+<p>我给爸妈买了点山楂、山药、鸡内金做的小零食。不为别的，就图它干净、好嚼，我爸那牙口也能吃，我妈那挑剔的胃也不闹。</p>
+<p>结果我妈嘴上说&quot;乱花钱&quot;，我上次回家，发现那盒已经空了大半。</p>
+<p>那一刻我特别想哭。</p>
+<p class='seg'><b>原来爸妈要的从来不多。不是什么名贵的补品，是你惦记着他们的胃、他们的牙、他们每一天吃得舒不舒服。</b></p>
+<p>孝顺这件事，最怕的就是&quot;等&quot;。</p>
+<p>等来等去，等到的可能是遗憾。</p>
+<p>如果你也有一份爸妈的体检报告，看完心里一沉——别只是沉，去做点什么。</p>
+<p>从他们每天的一粥一饭、一口零食开始。</p>
+<p>给他们的健康，添一点看得见的、干净的、你亲手挑的用心。</p>
+<p>趁一切，都还来得及。</p></article><article class="mart" id="art-5"><h2 class='mtitle'>为了让娃好好吃一顿饭，我差点在厨房哭出来</h2>
+<p>那天晚上，我是真的差点在厨房哭出来。</p>
+<p>一碗我炖了四十分钟的粥，变着花样摆成小熊的样子，娃看都不看，扒拉两口，把勺子一扔，跑了。</p>
+<p>我端着那碗粥，站在厨房中间，眼泪在眼眶里打转。</p>
+<p>不是气的。是累的，是委屈的，是那种&quot;我到底做错了什么&quot;的无力。</p>
+<p>当妈的都懂这种崩溃。你花了一小时做饭，孩子花一秒钟拒绝。日复一日，把人的耐心一点点磨没。</p>
+<p>我追着喂、哄着吃、吓唬着&quot;不吃就不许看动画片&quot;，整张饭桌像个战场，我是那个永远打不赢的士兵。</p>
+<p>后来我妈来了，看我这样，说了一句：你越紧张，孩子越不吃。</p>
+<p>我当时翻了个白眼。可那句话，扎得我睡不着。</p>
+<p class='seg'><b>我开始想：每次吃饭，我是什么状态？盯着、数着、催着、逼着。换成是我被这样对着吃饭，我咽得下去吗？</b></p>
+<p>原来问题，可能不在娃身上，在我这张绷得太紧的脸上。</p>
+<p>我做了个决定：把&quot;吃饭&quot;这件天大的事，降级成一件小事。</p>
+<p>不再把每一口都当成营养考核。我开始允许零食存在——但守一条线：得是我敢跟娃一起吃、配料我信得过的那种。</p>
+<p>我把家里的零食柜清了一遍，留下几样干净的：山楂、山药、小米做的，配料表短，我自己也爱吃。</p>
+<p>奇妙的事发生了。当饭桌不再是战场，娃反而没那么抗拒吃饭了。他饿了会自己找吃的，找到的是干净的；正餐没吃够，我也不那么慌了，因为我知道他嘴里那口，我放心。</p>
+<p class='seg'><b>你把弦松开，孩子才敢靠近。</b></p>
+<p>写到这儿，我想跟每一个在饭桌上快崩溃的妈妈说：</p>
+<p>你已经很好了。你炖的每一锅粥、追的每一步，都是爱。只是有时候，爱太用力，会把孩子推远。</p>
+<p>试着松一口气。给娃，也给自己。</p>
+<p>别再为一顿饭，把自己逼到快哭。</p>
+<p>孩子会好好吃饭的，只是没有你想的那么快。慢慢来。</p>
+<p>你要做的，不是赢下每一顿饭的战争，是让&quot;吃&quot;这件事，重新变得轻松、变得开心。</p>
+<p>先从，把一口干净的零食，笑着递给他开始吧。</p></article>
+</div><footer>由小羊博士咪蒙体生成器自动产出 · 发布前请人工终审</footer></body></html>
