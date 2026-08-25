@@ -1,0 +1,326 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小羊博士 · 2026-08-26（周三）</title><style>
+:root{--red:#ff2442;--soft:#ffe8ec;--ink:#222;--muted:#9a9a9a;--line:#f0f0f0;}
+*{box-sizing:border-box;}
+body{margin:0;background:#faf7f5;color:var(--ink);
+ font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;}
+a{color:inherit;text-decoration:none;}
+header{background:linear-gradient(135deg,#ff2442,#ff6b81);color:#fff;padding:24px 20px;text-align:center;}
+header h1{margin:0;font-size:20px;}
+header p{margin:6px 0 0;font-size:13px;opacity:.92;}
+.wrap{max-width:680px;margin:0 auto;padding:18px;}
+.meta{font-size:12px;color:var(--muted);text-align:center;margin:10px 0 18px;}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:14px 0;}
+.nav a,.nav span{flex:1;text-align:center;font-size:13px;padding:9px 6px;border-radius:20px;
+ border:1px solid var(--line);background:#fff;}
+.nav a.cur{background:var(--red);color:#fff;border-color:var(--red);font-weight:700;}
+.nav span.disabled{color:#ccc;background:#f7f7f7;}
+/* 首页目录卡 */
+.daycard{display:block;background:#fff;border:1px solid var(--line);border-radius:14px;
+ padding:15px 16px;margin-bottom:13px;box-shadow:0 2px 8px rgba(0,0,0,.03);}
+.daycard .d{font-weight:700;font-size:15px;color:var(--red);}
+.daycard .w{font-size:12px;color:var(--muted);margin-left:6px;}
+.daycard .angles{font-size:12px;color:#666;margin-top:8px;line-height:1.7;}
+.daycard .chip{display:inline-block;background:var(--soft);color:#c0394f;border-radius:8px;
+ padding:1px 7px;margin:2px 4px 2px 0;font-size:11px;}
+/* 笔记卡 */
+.note{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:18px;overflow:hidden;
+ box-shadow:0 2px 10px rgba(0,0,0,.03);}
+.nhead{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;background:var(--soft);}
+.tag-angle{font-weight:700;color:var(--red);font-size:13px;}
+.tag-angle .num{background:var(--red);color:#fff;border-radius:10px;padding:1px 8px;margin-right:8px;font-size:12px;}
+.prod{font-size:12px;color:#b56;}
+.imglabel{font-size:11px;color:var(--muted);padding:12px 16px 0;}
+.imgstrip{display:flex;gap:10px;overflow-x:auto;padding:8px 16px 14px;-webkit-overflow-scrolling:touch;}
+.imgstrip a{flex:none;}
+.imgstrip img{height:220px;width:165px;object-fit:cover;border-radius:12px;border:1px solid #eee;
+ box-shadow:0 1px 4px rgba(0,0,0,.06);}
+.nbody{padding:16px;}
+.lbl{font-size:11px;color:var(--muted);margin:0 0 6px;display:flex;justify-content:space-between;align-items:center;}
+.title{font-size:16px;font-weight:700;line-height:1.45;margin-bottom:14px;}
+.content{font-size:14px;line-height:1.95;white-space:pre-wrap;background:#fcfbfa;border-radius:10px;padding:12px;}
+.tags{color:var(--red);font-size:13px;line-height:1.8;margin-top:12px;}
+.cover{font-size:12px;color:#888;background:#f6f6f6;border-radius:8px;padding:10px;margin-top:12px;}
+.cover b{color:#555;}
+.copy{border:1px solid var(--red);color:var(--red);background:#fff;font-size:12px;
+ padding:4px 12px;border-radius:13px;cursor:pointer;}
+.copy:active{background:var(--red);color:#fff;}
+.copyall{display:block;width:100%;margin-top:12px;background:var(--red);color:#fff;border:none;
+ padding:11px;border-radius:20px;font-size:14px;font-weight:700;cursor:pointer;}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#333;color:#fff;
+ padding:9px 18px;border-radius:18px;font-size:13px;opacity:0;transition:.25s;pointer-events:none;z-index:9;}
+.toast.show{opacity:1;}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:24px;}
+/* 手册页 */
+.banner{background:#fff7e6;border:1px solid #ffe0a3;color:#8a6d3b;border-radius:12px;
+ padding:12px 14px;font-size:12.5px;line-height:1.7;margin-bottom:18px;}
+.hb{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;
+ box-shadow:0 2px 8px rgba(0,0,0,.03);}
+.hb h3{margin:0 0 4px;font-size:16px;}
+.hb .alias{color:var(--red);font-size:12px;margin-bottom:10px;}
+.hb .seg{font-size:13px;line-height:1.75;margin:8px 0;}
+.hb .seg b{display:inline-block;min-width:64px;color:#999;font-weight:600;}
+.hb .pit{background:#fcfbfa;border-radius:8px;padding:8px 10px;font-size:12.5px;color:#555;
+ line-height:1.7;margin-top:4px;}
+.hbtable{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff;border-radius:12px;overflow:hidden;}
+.hbtable th,.hbtable td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;}
+.hbtable th{background:var(--soft);color:#c0394f;}
+.sec-title{font-size:15px;font-weight:700;margin:22px 0 12px;color:var(--ink);}
+.hblink{display:inline-block;background:var(--red);color:#fff;border-radius:18px;
+ padding:8px 16px;font-size:13px;font-weight:700;margin:4px 0 16px;}
+
+.mmbox{background:#f6f2ff;border:1px solid #e2d5ff;border-radius:12px;padding:14px 16px;margin:14px 0;}
+.mmhd{font-weight:700;color:#6a3fb5;font-size:14px;margin-bottom:8px;}
+.mmhd a{color:#7c4dff;font-size:13px;}
+.mmls{margin:0;padding-left:22px;}
+.mmls li{margin:6px 0;font-size:14px;}
+.mmls a{color:#5a3aa0;}</style></head><body>
+<header><h1>🍠 小羊博士 · 小红书每日 10 篇</h1>
+<p>2026-08-26 周三 · 专研天然食养 · 复制即可发布</p></header>
+<div class="wrap">
+<div class="nav"><a href="2026-08-24.html">← 2026-08-24</a><a href="../index.html" class="cur">📅 全部目录</a><span class="disabled">最新一天 →</span></div>
+<div class="mmbox"><div class="mmhd">📝 今日情感长文（咪蒙体）· 5 篇 <a href="../mimeng/2026-08-26.html">查看全文 →</a></div><ol class="mmls"><li><a href="../mimeng/2026-08-26.html#art-1">我妈这辈子最舍得的一次，是给外孙买零食</a></li><li><a href="../mimeng/2026-08-26.html#art-2">别再给娃买那些看起来健康的零食了</a></li><li><a href="../mimeng/2026-08-26.html#art-3">结婚证给不了你安全感，但一顿好好吃的饭可以</a></li><li><a href="../mimeng/2026-08-26.html#art-4">你越焦虑，娃越不好好吃饭</a></li><li><a href="../mimeng/2026-08-26.html#art-5">我把养生两个字，从体检报告里读懂了</a></li></ol></div><div class="mmbox" style="background:#eefbfb;border-color:#bfeaea"><div class="mmhd" style="color:#088">🎬 今日抖音口播 · 5 条 <a href="../douyin/2026-08-26.html" style="color:#0aa">查看脚本 →</a></div><ol class="mmls"><li><a href="../douyin/2026-08-26.html#art-1">别让廉价的甜，养坏了孩子的胃口</a></li><li><a href="../douyin/2026-08-26.html#art-2">邻居家娃也磨牙，她做对了一件事，我记了很久</a></li><li><a href="../douyin/2026-08-26.html#art-3">追着喂饭的妈妈举个手，我教你个更省心的办法</a></li><li><a href="../douyin/2026-08-26.html#art-4">红枣、小米、山药，最朴素的养脾胃三样</a></li><li><a href="../douyin/2026-08-26.html#art-5">娃肚子鼓鼓、口气重，八成是积食了</a></li></ol></div>
+<div class="meta">共 10 篇，覆盖 10 个角度 ｜ 点按钮即可复制</div>
+<div class="note">
+<div class="nhead"><span class="tag-angle"><span class="num">1</span>打工人零食</span><span class="prod">益生元苹果八珍丸</span></div>
+<div class="imglabel">📸 配套图片 3 张（与文案匹配，点开可下载）</div><div class="imgstrip"><a href="../img/2026-08-26/00-cover.jpg" target="_blank"><img src="../img/2026-08-26/00-cover.jpg" loading="lazy"></a><a href="../img/2026-08-26/00-points.jpg" target="_blank"><img src="../img/2026-08-26/00-points.jpg" loading="lazy"></a><a href="../img/2026-08-26/00-info.jpg" target="_blank"><img src="../img/2026-08-26/00-info.jpg" loading="lazy"></a></div>
+<div class="nbody">
+<div class="lbl"><span>标题</span><button class="copy" data-i="0" data-k="title">复制</button></div>
+<div class="title">打工人的抽屉里，必须有这个益生元苹果八珍丸😮‍💨</div>
+<div class="lbl"><span>正文</span><button class="copy" data-i="0" data-k="body">复制</button></div>
+<div class="content">工位零食三件套，这个必须有姓名😮‍💨
+我要的工位零食：解馋、不黏手、还能稍微养一下自己👇
+主角 → ✨益生元苹果八珍丸✨（29.9/盒）
+一句话：古方八珍打成的开胃软丸子
+为什么爱它👇
+🔥 古方八珍搭配苹果+益生元，健脾开胃的好方子
+💡 精选「中国苹果之乡」「中国山楂之乡」优质产地原料
+💡 0蔗糖0脂肪0色素0防腐剂0甜味剂，真正的清洁食品
+✨ 鲜果打浆低温锁鲜，30%苹果+30%山楂，酸甜软糯，老人小孩都爱吃
+配料：苹果、山楂、山药、红枣、陈皮、茯苓、鸡内金、麦芽、益生元
+放包里、搁工位上随手就能来一份，比奶茶清爽多了😮‍💨
+💁‍♀️ 在意配料、又不想亏待嘴巴的人，会很对胃口
+同是打工人，点赞抱团养生😮‍💨</div>
+<div class="tags">#小羊博士 #药食同源 #健康零食 #0添加 #打工人零食 #办公室零食 #益生元苹果八珍丸</div>
+<div class="cover"><b>🖼 配图建议：</b>封面：工位/键盘+零食摆拍，大字「工位续命零食」；都市通勤感。</div>
+<button class="copyall" data-i="0" data-k="all">一键复制全文</button>
+</div></div><div class="note">
+<div class="nhead"><span class="tag-angle"><span class="num">2</span>节气养生</span><span class="prod">山楂鸡内金消消焦饼</span></div>
+<div class="imglabel">📸 配套图片 3 张（与文案匹配，点开可下载）</div><div class="imgstrip"><a href="../img/2026-08-26/01-cover.jpg" target="_blank"><img src="../img/2026-08-26/01-cover.jpg" loading="lazy"></a><a href="../img/2026-08-26/01-points.jpg" target="_blank"><img src="../img/2026-08-26/01-points.jpg" loading="lazy"></a><a href="../img/2026-08-26/01-info.jpg" target="_blank"><img src="../img/2026-08-26/01-info.jpg" loading="lazy"></a></div>
+<div class="nbody">
+<div class="lbl"><span>标题</span><button class="copy" data-i="1" data-k="title">复制</button></div>
+<div class="title">换季脾胃容易闹脾气，备点这个山楂鸡内金消消焦☀️</div>
+<div class="lbl"><span>正文</span><button class="copy" data-i="1" data-k="body">复制</button></div>
+<div class="content">这个季节，我的零食抽屉换上了它☀️
+应季而食，给身体一点温柔的照顾👇
+主角 → ✨山楂鸡内金消消焦饼✨（29.9/盒）
+一句话：吃多了来两片的「消消焦饼」
+为什么爱它👇
+🉑 鸡内金是「鸡之黄金」，配山楂、陈皮，健脾养胃、缓解胀气
+🉑 0蔗糖0油0色素0香精0防腐剂，好吃无负担
+💡 手工制作、现做现发（3天内生产）、120天短保，新鲜纯净
+✨ 河南道地美食，薄如纸片、焦香酥脆，无限回购
+配料：小麦粉、全麦粉、山楂原浆、鸡内金、芝麻、陈皮、食用盐
+嘴馋的时候来一点，满足感有了，心里也不慌☀️
+💁‍♀️ 不管是养胃党还是单纯嘴馋党，这个都能拿捏
+应季小知识，收藏起来对照吃☀️</div>
+<div class="tags">#小羊博士 #药食同源 #健康零食 #0添加 #节气养生 #应季而食 #山楂鸡内金消消焦饼</div>
+<div class="cover"><b>🖼 配图建议：</b>封面：当季元素（阳光/落叶/茶）+产品，大字点明节气；氛围感优先。</div>
+<button class="copyall" data-i="1" data-k="all">一键复制全文</button>
+</div></div><div class="note">
+<div class="nhead"><span class="tag-angle"><span class="num">3</span>囤货清单</span><span class="prod">缤纷水果山楂棒棒糖</span></div>
+<div class="imglabel">📸 配套图片 3 张（与文案匹配，点开可下载）</div><div class="imgstrip"><a href="../img/2026-08-26/02-cover.jpg" target="_blank"><img src="../img/2026-08-26/02-cover.jpg" loading="lazy"></a><a href="../img/2026-08-26/02-list.jpg" target="_blank"><img src="../img/2026-08-26/02-list.jpg" loading="lazy"></a><a href="../img/2026-08-26/02-info.jpg" target="_blank"><img src="../img/2026-08-26/02-info.jpg" loading="lazy"></a></div>
+<div class="nbody">
+<div class="lbl"><span>标题</span><button class="copy" data-i="2" data-k="title">复制</button></div>
+<div class="title">小羊博士闭眼囤清单｜这几款别错过🉑｜亲测</div>
+<div class="lbl"><span>正文</span><button class="copy" data-i="2" data-k="body">复制</button></div>
+<div class="content">养生零食选择困难症，看这一篇就够🉑
+按需求分好类，对号入座直接抄作业👇
+📋 小羊博士 闭眼囤清单：
+✅ 益生元苹果八珍丸（29.9/盒）｜酸酸甜甜好开胃，软糯版的山楂八珍丸
+✨ 山楂鸡内金消消焦饼（29.9/盒）｜焦香酥脆又养胃的小鸡饼
+🌟 益生元五黑高钙小脆饼（29.9/盒）｜90%五黑的高钙小脆饼，给娃补钙的零食
+🉑 缤纷水果山楂棒棒糖（19.9/盒）｜山楂含量≥47%的水果棒棒糖，更健康的解馋糖
+🌟 黄小米鸡内金香香焦饼（32.9/盒）｜80%小米的低GI养胃焦饼，咸香版
+✨ 山药鸡内金酥酥焦饼（29.9/盒）｜山药茯苓健脾的酥脆焦饼
+清单不易，收藏到购物车慢慢拔草🉑</div>
+<div class="tags">#小羊博士 #药食同源 #健康零食 #0添加 #囤货清单 #好物清单 #零食推荐 #缤纷水果山楂棒棒糖</div>
+<div class="cover"><b>🖼 配图建议：</b>封面：多产品平铺九宫格，大字「囤货清单」+数字「6款」；丰富度拉满。</div>
+<button class="copyall" data-i="2" data-k="all">一键复制全文</button>
+</div></div><div class="note">
+<div class="nhead"><span class="tag-angle"><span class="num">4</span>宝妈育儿</span><span class="prod">益生元苹果八珍丸</span></div>
+<div class="imglabel">📸 配套图片 3 张（与文案匹配，点开可下载）</div><div class="imgstrip"><a href="../img/2026-08-26/03-cover.jpg" target="_blank"><img src="../img/2026-08-26/03-cover.jpg" loading="lazy"></a><a href="../img/2026-08-26/03-points.jpg" target="_blank"><img src="../img/2026-08-26/03-points.jpg" loading="lazy"></a><a href="../img/2026-08-26/03-info.jpg" target="_blank"><img src="../img/2026-08-26/03-info.jpg" loading="lazy"></a></div>
+<div class="nbody">
+<div class="lbl"><span>标题</span><button class="copy" data-i="3" data-k="title">复制</button></div>
+<div class="title">养生党日常囤货｜娃的解馋营养小零食🦷｜真心安利</div>
+<div class="lbl"><span>正文</span><button class="copy" data-i="3" data-k="body">复制</button></div>
+<div class="content">当妈之后，给娃买零食比给自己买护肤品还谨慎🦷
+选娃的零食，我只有三条标准：配料干净、娃爱吃、我放心👇
+主角 → ✨益生元苹果八珍丸✨（29.9/盒）
+一句话：古方八珍打成的开胃软丸子
+真心觉得好在哪👇
+💖 古方八珍搭配苹果+益生元，健脾开胃的好方子
+✨ 精选「中国苹果之乡」「中国山楂之乡」优质产地原料
+✨ 0蔗糖0脂肪0色素0防腐剂0甜味剂，真正的清洁食品
+🔥 鲜果打浆低温锁鲜，30%苹果+30%山楂，酸甜软糯，老人小孩都爱吃
+配料：苹果、山楂、山药、红枣、陈皮、茯苓、鸡内金、麦芽、益生元
+比起其他零食，它胜在配料干净、吃得放心🦷
+💁‍♀️ 很适合养生党，也适合想给家人挑点干净零食的人
+同款焦虑的妈妈评论区集合，一起避坑🦷</div>
+<div class="tags">#小羊博士 #药食同源 #健康零食 #0添加 #宝妈育儿 #儿童零食 #儿童零食无添加 #宝宝零食 #辅食打卡 #宝宝的辅食日记</div>
+<div class="cover"><b>🖼 配图建议：</b>封面：孩子开心吃零食的抓拍 + 配料表特写；大字「当妈后才懂的零食」/「娃超爱吃的干净零食」。</div>
+<button class="copyall" data-i="3" data-k="all">一键复制全文</button>
+</div></div><div class="note">
+<div class="nhead"><span class="tag-angle"><span class="num">5</span>食养科普</span><span class="prod">山楂鸡内金消消焦饼</span></div>
+<div class="imglabel">📸 配套图片 4 张（与文案匹配，点开可下载）</div><div class="imgstrip"><a href="../img/2026-08-26/04-cover.jpg" target="_blank"><img src="../img/2026-08-26/04-cover.jpg" loading="lazy"></a><a href="../img/2026-08-26/04-points.jpg" target="_blank"><img src="../img/2026-08-26/04-points.jpg" loading="lazy"></a><a href="../img/2026-08-26/04-ingredient.jpg" target="_blank"><img src="../img/2026-08-26/04-ingredient.jpg" loading="lazy"></a><a href="../img/2026-08-26/04-info.jpg" target="_blank"><img src="../img/2026-08-26/04-info.jpg" loading="lazy"></a></div>
+<div class="nbody">
+<div class="lbl"><span>标题</span><button class="copy" data-i="4" data-k="title">复制</button></div>
+<div class="title">为什么越来越多人在零食里吃「食养」🤓｜亲测</div>
+<div class="lbl"><span>正文</span><button class="copy" data-i="4" data-k="body">复制</button></div>
+<div class="content">今天聊点干货：消食界的几位「老朋友」🤓
+先科普再种草，知道为什么吃，才吃得明白👇
+主角 → ✨山楂鸡内金消消焦饼✨（29.9/盒）
+一句话：焦香酥脆又养胃的小鸡饼
+凭啥让我反复回购👇
+🔥 鸡内金是「鸡之黄金」，配山楂、陈皮，健脾养胃、缓解胀气
+💡 0蔗糖0油0色素0香精0防腐剂，好吃无负担
+🉑 手工制作、现做现发（3天内生产）、120天短保，新鲜纯净
+👉 河南道地美食，薄如纸片、焦香酥脆，无限回购
+🌿 顺便说说里面的料：
+🌿 鸡内金（鸡之黄金 / 化石黄金）：现代研究说它能帮胃肠动起来、增进食欲，难怪叫「鸡之黄金」
+📜 山楂（消肉食的酸甜高手）：「消肉食第一」，大鱼大肉后的天然解腻搭子
+🔬 陈皮（越陈越香 · 六陈之一）：广式煲汤都爱放的陈皮，这里用来理气开胃、提味解腻
+配料：小麦粉、全麦粉、山楂原浆、鸡内金、芝麻、陈皮、食用盐
+焦香酥脆又养胃的小鸡饼，关键是大人小孩都能分着吃，囤着安心🤓
+💁‍♀️ 养胃党可以冲，自留、送人都合适
+涨知识的笔记，记得收藏慢慢看🤓</div>
+<div class="tags">#小羊博士 #药食同源 #健康零食 #0添加 #食养科普 #养生科普 #中式养生 #轻养生 #山楂鸡内金消消焦饼</div>
+<div class="cover"><b>🖼 配图建议：</b>封面：食材手绘/中式留白风，大字「药食同源」；知识感、可信度优先。</div>
+<button class="copyall" data-i="4" data-k="all">一键复制全文</button>
+</div></div><div class="note">
+<div class="nhead"><span class="tag-angle"><span class="num">6</span>控糖嘴馋</span><span class="prod">益生元五黑高钙小脆饼</span></div>
+<div class="imglabel">📸 配套图片 3 张（与文案匹配，点开可下载）</div><div class="imgstrip"><a href="../img/2026-08-26/05-cover.jpg" target="_blank"><img src="../img/2026-08-26/05-cover.jpg" loading="lazy"></a><a href="../img/2026-08-26/05-points.jpg" target="_blank"><img src="../img/2026-08-26/05-points.jpg" loading="lazy"></a><a href="../img/2026-08-26/05-info.jpg" target="_blank"><img src="../img/2026-08-26/05-info.jpg" loading="lazy"></a></div>
+<div class="nbody">
+<div class="lbl"><span>标题</span><button class="copy" data-i="5" data-k="title">复制</button></div>
+<div class="title">嘴馋又怕胖的姐妹，这个益生元五黑高钙小脆饼闭🥗</div>
+<div class="lbl"><span>正文</span><button class="copy" data-i="5" data-k="body">复制</button></div>
+<div class="content">戒糖路上，我终于找到能解馋的平替了🥗
+我的要求很简单：0蔗糖、配料干净、还得真的好吃👇
+主角 → ✨益生元五黑高钙小脆饼✨（29.9/盒）
+一句话：一口吃进5种黑的高钙脆饼
+划重点说说优点👇
+👉 90%五黑含量，一口吃进5种黑色高钙营养
+🌟 0麸质0反式脂肪酸0白砂糖低钠配方，安全BUFF叠满
+💡 儿童定制配方，特添加益生元、碳酸钙，高钙好吸收
+💖 手工制作、现做现发（3天内生产）、短保新鲜
+配料：五黑（黑米、黑芝麻、黑藜麦、黑桑葚、黑枸杞）&gt;90%、糯米、低聚果糖（益生元3%）、碳酸钙（1%）
+90%五黑的高钙小脆饼，给娃补钙的零食，关键是大人小孩都能分着吃，囤着安心🥗
+💁‍♀️ 在意配料、又不想亏待嘴巴的人，会很对胃口
+怕忘记的先收藏，嘴馋时来抄作业🥗</div>
+<div class="tags">#小羊博士 #药食同源 #健康零食 #0添加 #控糖嘴馋 #控糖零食 #0蔗糖 #减脂零食 #低GI #益生元五黑高钙小脆饼</div>
+<div class="cover"><b>🖼 配图建议：</b>封面：零食+卷尺/体重秤元素，大字「控糖也能吃的零食」；或0糖标签放大特写。</div>
+<button class="copyall" data-i="5" data-k="all">一键复制全文</button>
+</div></div><div class="note">
+<div class="nhead"><span class="tag-angle"><span class="num">7</span>真实测评</span><span class="prod">益生元五黑高钙小脆饼</span></div>
+<div class="imglabel">📸 配套图片 3 张（与文案匹配，点开可下载）</div><div class="imgstrip"><a href="../img/2026-08-26/06-cover.jpg" target="_blank"><img src="../img/2026-08-26/06-cover.jpg" loading="lazy"></a><a href="../img/2026-08-26/06-points.jpg" target="_blank"><img src="../img/2026-08-26/06-points.jpg" loading="lazy"></a><a href="../img/2026-08-26/06-info.jpg" target="_blank"><img src="../img/2026-08-26/06-info.jpg" loading="lazy"></a></div>
+<div class="nbody">
+<div class="lbl"><span>标题</span><button class="copy" data-i="6" data-k="title">复制</button></div>
+<div class="title">实测益生元五黑高钙小脆饼：优点缺点我都说⭐｜亲测</div>
+<div class="lbl"><span>正文</span><button class="copy" data-i="6" data-k="body">复制</button></div>
+<div class="content">测评最怕只夸不说缺点，这篇我都讲⭐
+我尽量客观，从口感、成分、价格、适合谁四个维度说👇
+主角 → ✨益生元五黑高钙小脆饼✨（29.9/盒）
+一句话：给娃的黑色高钙小脆饼
+凭啥让我反复回购👇
+💡 90%五黑含量，一口吃进5种黑色高钙营养
+✨ 0麸质0反式脂肪酸0白砂糖低钠配方，安全BUFF叠满
+🌟 儿童定制配方，特添加益生元、碳酸钙，高钙好吸收
+🌟 手工制作、现做现发（3天内生产）、短保新鲜
+配料：五黑（黑米、黑芝麻、黑藜麦、黑桑葚、黑枸杞）&gt;90%、糯米、低聚果糖（益生元3%）、碳酸钙（1%）
+嘴馋的时候来一点，满足感有了，心里也不慌⭐
+💁‍♀️ 不管是宝妈还是单纯嘴馋党，这个都能拿捏
+真实测评不易，觉得有用点个赞⭐</div>
+<div class="tags">#小羊博士 #药食同源 #健康零食 #0添加 #真实测评 #零食测评 #好物测评 #益生元五黑高钙小脆饼</div>
+<div class="cover"><b>🖼 配图建议：</b>封面：产品实拍+「真实测评」印章感大字；可加⭐评分表角标。</div>
+<button class="copyall" data-i="6" data-k="all">一键复制全文</button>
+</div></div><div class="note">
+<div class="nhead"><span class="tag-angle"><span class="num">8</span>养胃种草</span><span class="prod">山楂鸡内金消消焦饼</span></div>
+<div class="imglabel">📸 配套图片 3 张（与文案匹配，点开可下载）</div><div class="imgstrip"><a href="../img/2026-08-26/07-cover.jpg" target="_blank"><img src="../img/2026-08-26/07-cover.jpg" loading="lazy"></a><a href="../img/2026-08-26/07-points.jpg" target="_blank"><img src="../img/2026-08-26/07-points.jpg" loading="lazy"></a><a href="../img/2026-08-26/07-info.jpg" target="_blank"><img src="../img/2026-08-26/07-info.jpg" loading="lazy"></a></div>
+<div class="nbody">
+<div class="lbl"><span>标题</span><button class="copy" data-i="7" data-k="title">复制</button></div>
+<div class="title">胃胀、吃多了不消化、饭后不适的人，把这个山楂🌿</div>
+<div class="lbl"><span>正文</span><button class="copy" data-i="7" data-k="body">复制</button></div>
+<div class="content">自从肠胃变娇气，我连零食都开始挑了🌿
+比起喝养生茶，我更想要一个嘴馋时也能安心吃的零食👇
+主角 → ✨山楂鸡内金消消焦饼✨（29.9/盒）
+一句话：薄如纸片、越嚼越香的养胃焦饼
+凭啥让我反复回购👇
+🌟 鸡内金是「鸡之黄金」，配山楂、陈皮，健脾养胃、缓解胀气
+💖 0蔗糖0油0色素0香精0防腐剂，好吃无负担
+✨ 手工制作、现做现发（3天内生产）、120天短保，新鲜纯净
+✨ 河南道地美食，薄如纸片、焦香酥脆，无限回购
+配料：小麦粉、全麦粉、山楂原浆、鸡内金、芝麻、陈皮、食用盐
+嘴馋的时候来一点，满足感有了，心里也不慌🌿
+💁‍♀️ 养胃党可以冲，自留、送人都合适
+养胃是细水长流的事，先码后看不迷路🌿</div>
+<div class="tags">#小羊博士 #药食同源 #健康零食 #0添加 #养胃种草 #养胃零食 #养胃 #鸡内金 #山楂鸡内金消消焦饼</div>
+<div class="cover"><b>🖼 配图建议：</b>封面：暖色调，一只手掰开焦饼露出酥脆断面，配大字「养胃零食」；或马克杯+焦饼的下午茶摆拍。</div>
+<button class="copyall" data-i="7" data-k="all">一键复制全文</button>
+</div></div><div class="note">
+<div class="nhead"><span class="tag-angle"><span class="num">9</span>孝心送父母</span><span class="prod">山楂鸡内金消消焦饼</span></div>
+<div class="imglabel">📸 配套图片 3 张（与文案匹配，点开可下载）</div><div class="imgstrip"><a href="../img/2026-08-26/08-cover.jpg" target="_blank"><img src="../img/2026-08-26/08-cover.jpg" loading="lazy"></a><a href="../img/2026-08-26/08-points.jpg" target="_blank"><img src="../img/2026-08-26/08-points.jpg" loading="lazy"></a><a href="../img/2026-08-26/08-info.jpg" target="_blank"><img src="../img/2026-08-26/08-info.jpg" loading="lazy"></a></div>
+<div class="nbody">
+<div class="lbl"><span>标题</span><button class="copy" data-i="8" data-k="title">复制</button></div>
+<div class="title">给爸妈囤点养胃的，比买保健品实在🍎｜新手友好</div>
+<div class="lbl"><span>正文</span><button class="copy" data-i="8" data-k="body">复制</button></div>
+<div class="content">上次带回家一盒，结果被我妈夸了🍎
+给长辈选零食：要好嚼、要干净、要他们真的愿意吃👇
+主角 → ✨山楂鸡内金消消焦饼✨（29.9/盒）
+一句话：吃多了来两片的「消消焦饼」
+私心安利的理由👇
+🉑 鸡内金是「鸡之黄金」，配山楂、陈皮，健脾养胃、缓解胀气
+👉 0蔗糖0油0色素0香精0防腐剂，好吃无负担
+🉑 手工制作、现做现发（3天内生产）、120天短保，新鲜纯净
+✅ 河南道地美食，薄如纸片、焦香酥脆，无限回购
+配料：小麦粉、全麦粉、山楂原浆、鸡内金、芝麻、陈皮、食用盐
+焦香酥脆又养胃的小鸡饼，关键是大人小孩都能分着吃，囤着安心🍎
+💁‍♀️ 很适合养胃党，也适合想给家人挑点干净零食的人
+你都给爸妈买啥？评论区分享孝心清单🍎</div>
+<div class="tags">#小羊博士 #药食同源 #健康零食 #0添加 #孝心送父母 #送父母 #孝心好物 #长辈零食 #山楂鸡内金消消焦饼</div>
+<div class="cover"><b>🖼 配图建议：</b>封面：温馨家庭场景/父母笑容+产品，大字「送爸妈」；暖色亲情向。</div>
+<button class="copyall" data-i="8" data-k="all">一键复制全文</button>
+</div></div><div class="note">
+<div class="nhead"><span class="tag-angle"><span class="num">10</span>场景日记</span><span class="prod">山药鸡内金酥酥焦饼</span></div>
+<div class="imglabel">📸 配套图片 3 张（与文案匹配，点开可下载）</div><div class="imgstrip"><a href="../img/2026-08-26/09-cover.jpg" target="_blank"><img src="../img/2026-08-26/09-cover.jpg" loading="lazy"></a><a href="../img/2026-08-26/09-points.jpg" target="_blank"><img src="../img/2026-08-26/09-points.jpg" loading="lazy"></a><a href="../img/2026-08-26/09-info.jpg" target="_blank"><img src="../img/2026-08-26/09-info.jpg" loading="lazy"></a></div>
+<div class="nbody">
+<div class="lbl"><span>标题</span><button class="copy" data-i="9" data-k="title">复制</button></div>
+<div class="title">戒糖第30天，靠这个山药鸡内金酥酥焦饼撑过来的🥹</div>
+<div class="lbl"><span>正文</span><button class="copy" data-i="9" data-k="body">复制</button></div>
+<div class="content">记录是为了提醒自己，也分享给同路的你🥹
+没有夸张的功效，只有真实的一点点变化👇
+主角 → ✨山药鸡内金酥酥焦饼✨（29.9/盒）
+一句话：健脾黄金三角做的酥脆焦饼
+划重点说说优点👇
+🔥 山药+茯苓+鸡内金，健脾养胃的黄金搭配
+👉 0蔗糖0油0色素0香精0防腐剂，好吃无负担
+👉 手工制作、现做现发（3天内生产）、120天短保
+👉 河南道地美食，薄如纸片、焦香酥脆，无限回购
+配料：小麦粉、全麦粉、山药、茯苓、鸡内金、芝麻、陈皮、食用盐
+回购好几次了，少了它零食抽屉总觉得空一块🥹
+💁‍♀️ 养胃党可以冲，自留、送人都合适
+你也在偷偷养生吗？评论区报到🥹</div>
+<div class="tags">#小羊博士 #药食同源 #健康零食 #0添加 #场景日记 #养生日记 #生活记录 #山药鸡内金酥酥焦饼</div>
+<div class="cover"><b>🖼 配图建议：</b>封面：生活化随手拍（晨光/书桌/通勤）+零食，手写体标题；真实vlog感。</div>
+<button class="copyall" data-i="9" data-k="all">一键复制全文</button>
+</div></div>
+<div class="nav"><a href="2026-08-24.html">← 2026-08-24</a><a href="../index.html" class="cur">📅 全部目录</a><span class="disabled">最新一天 →</span></div>
+</div>
+<footer>由小羊博士内容生成器自动产出 · 发布前请人工终审合规</footer>
+<div class="toast" id="toast"></div>
+<script>
+const DATA=[{"title": "打工人的抽屉里，必须有这个益生元苹果八珍丸😮‍💨", "body": "工位零食三件套，这个必须有姓名😮‍💨\n我要的工位零食：解馋、不黏手、还能稍微养一下自己👇\n主角 → ✨益生元苹果八珍丸✨（29.9/盒）\n一句话：古方八珍打成的开胃软丸子\n为什么爱它👇\n🔥 古方八珍搭配苹果+益生元，健脾开胃的好方子\n💡 精选「中国苹果之乡」「中国山楂之乡」优质产地原料\n💡 0蔗糖0脂肪0色素0防腐剂0甜味剂，真正的清洁食品\n✨ 鲜果打浆低温锁鲜，30%苹果+30%山楂，酸甜软糯，老人小孩都爱吃\n配料：苹果、山楂、山药、红枣、陈皮、茯苓、鸡内金、麦芽、益生元\n放包里、搁工位上随手就能来一份，比奶茶清爽多了😮‍💨\n💁‍♀️ 在意配料、又不想亏待嘴巴的人，会很对胃口\n同是打工人，点赞抱团养生😮‍💨", "tags": "#小羊博士 #药食同源 #健康零食 #0添加 #打工人零食 #办公室零食 #益生元苹果八珍丸"}, {"title": "换季脾胃容易闹脾气，备点这个山楂鸡内金消消焦☀️", "body": "这个季节，我的零食抽屉换上了它☀️\n应季而食，给身体一点温柔的照顾👇\n主角 → ✨山楂鸡内金消消焦饼✨（29.9/盒）\n一句话：吃多了来两片的「消消焦饼」\n为什么爱它👇\n🉑 鸡内金是「鸡之黄金」，配山楂、陈皮，健脾养胃、缓解胀气\n🉑 0蔗糖0油0色素0香精0防腐剂，好吃无负担\n💡 手工制作、现做现发（3天内生产）、120天短保，新鲜纯净\n✨ 河南道地美食，薄如纸片、焦香酥脆，无限回购\n配料：小麦粉、全麦粉、山楂原浆、鸡内金、芝麻、陈皮、食用盐\n嘴馋的时候来一点，满足感有了，心里也不慌☀️\n💁‍♀️ 不管是养胃党还是单纯嘴馋党，这个都能拿捏\n应季小知识，收藏起来对照吃☀️", "tags": "#小羊博士 #药食同源 #健康零食 #0添加 #节气养生 #应季而食 #山楂鸡内金消消焦饼"}, {"title": "小羊博士闭眼囤清单｜这几款别错过🉑｜亲测", "body": "养生零食选择困难症，看这一篇就够🉑\n按需求分好类，对号入座直接抄作业👇\n📋 小羊博士 闭眼囤清单：\n✅ 益生元苹果八珍丸（29.9/盒）｜酸酸甜甜好开胃，软糯版的山楂八珍丸\n✨ 山楂鸡内金消消焦饼（29.9/盒）｜焦香酥脆又养胃的小鸡饼\n🌟 益生元五黑高钙小脆饼（29.9/盒）｜90%五黑的高钙小脆饼，给娃补钙的零食\n🉑 缤纷水果山楂棒棒糖（19.9/盒）｜山楂含量≥47%的水果棒棒糖，更健康的解馋糖\n🌟 黄小米鸡内金香香焦饼（32.9/盒）｜80%小米的低GI养胃焦饼，咸香版\n✨ 山药鸡内金酥酥焦饼（29.9/盒）｜山药茯苓健脾的酥脆焦饼\n清单不易，收藏到购物车慢慢拔草🉑", "tags": "#小羊博士 #药食同源 #健康零食 #0添加 #囤货清单 #好物清单 #零食推荐 #缤纷水果山楂棒棒糖"}, {"title": "养生党日常囤货｜娃的解馋营养小零食🦷｜真心安利", "body": "当妈之后，给娃买零食比给自己买护肤品还谨慎🦷\n选娃的零食，我只有三条标准：配料干净、娃爱吃、我放心👇\n主角 → ✨益生元苹果八珍丸✨（29.9/盒）\n一句话：古方八珍打成的开胃软丸子\n真心觉得好在哪👇\n💖 古方八珍搭配苹果+益生元，健脾开胃的好方子\n✨ 精选「中国苹果之乡」「中国山楂之乡」优质产地原料\n✨ 0蔗糖0脂肪0色素0防腐剂0甜味剂，真正的清洁食品\n🔥 鲜果打浆低温锁鲜，30%苹果+30%山楂，酸甜软糯，老人小孩都爱吃\n配料：苹果、山楂、山药、红枣、陈皮、茯苓、鸡内金、麦芽、益生元\n比起其他零食，它胜在配料干净、吃得放心🦷\n💁‍♀️ 很适合养生党，也适合想给家人挑点干净零食的人\n同款焦虑的妈妈评论区集合，一起避坑🦷", "tags": "#小羊博士 #药食同源 #健康零食 #0添加 #宝妈育儿 #儿童零食 #儿童零食无添加 #宝宝零食 #辅食打卡 #宝宝的辅食日记"}, {"title": "为什么越来越多人在零食里吃「食养」🤓｜亲测", "body": "今天聊点干货：消食界的几位「老朋友」🤓\n先科普再种草，知道为什么吃，才吃得明白👇\n主角 → ✨山楂鸡内金消消焦饼✨（29.9/盒）\n一句话：焦香酥脆又养胃的小鸡饼\n凭啥让我反复回购👇\n🔥 鸡内金是「鸡之黄金」，配山楂、陈皮，健脾养胃、缓解胀气\n💡 0蔗糖0油0色素0香精0防腐剂，好吃无负担\n🉑 手工制作、现做现发（3天内生产）、120天短保，新鲜纯净\n👉 河南道地美食，薄如纸片、焦香酥脆，无限回购\n🌿 顺便说说里面的料：\n🌿 鸡内金（鸡之黄金 / 化石黄金）：现代研究说它能帮胃肠动起来、增进食欲，难怪叫「鸡之黄金」\n📜 山楂（消肉食的酸甜高手）：「消肉食第一」，大鱼大肉后的天然解腻搭子\n🔬 陈皮（越陈越香 · 六陈之一）：广式煲汤都爱放的陈皮，这里用来理气开胃、提味解腻\n配料：小麦粉、全麦粉、山楂原浆、鸡内金、芝麻、陈皮、食用盐\n焦香酥脆又养胃的小鸡饼，关键是大人小孩都能分着吃，囤着安心🤓\n💁‍♀️ 养胃党可以冲，自留、送人都合适\n涨知识的笔记，记得收藏慢慢看🤓", "tags": "#小羊博士 #药食同源 #健康零食 #0添加 #食养科普 #养生科普 #中式养生 #轻养生 #山楂鸡内金消消焦饼"}, {"title": "嘴馋又怕胖的姐妹，这个益生元五黑高钙小脆饼闭🥗", "body": "戒糖路上，我终于找到能解馋的平替了🥗\n我的要求很简单：0蔗糖、配料干净、还得真的好吃👇\n主角 → ✨益生元五黑高钙小脆饼✨（29.9/盒）\n一句话：一口吃进5种黑的高钙脆饼\n划重点说说优点👇\n👉 90%五黑含量，一口吃进5种黑色高钙营养\n🌟 0麸质0反式脂肪酸0白砂糖低钠配方，安全BUFF叠满\n💡 儿童定制配方，特添加益生元、碳酸钙，高钙好吸收\n💖 手工制作、现做现发（3天内生产）、短保新鲜\n配料：五黑（黑米、黑芝麻、黑藜麦、黑桑葚、黑枸杞）>90%、糯米、低聚果糖（益生元3%）、碳酸钙（1%）\n90%五黑的高钙小脆饼，给娃补钙的零食，关键是大人小孩都能分着吃，囤着安心🥗\n💁‍♀️ 在意配料、又不想亏待嘴巴的人，会很对胃口\n怕忘记的先收藏，嘴馋时来抄作业🥗", "tags": "#小羊博士 #药食同源 #健康零食 #0添加 #控糖嘴馋 #控糖零食 #0蔗糖 #减脂零食 #低GI #益生元五黑高钙小脆饼"}, {"title": "实测益生元五黑高钙小脆饼：优点缺点我都说⭐｜亲测", "body": "测评最怕只夸不说缺点，这篇我都讲⭐\n我尽量客观，从口感、成分、价格、适合谁四个维度说👇\n主角 → ✨益生元五黑高钙小脆饼✨（29.9/盒）\n一句话：给娃的黑色高钙小脆饼\n凭啥让我反复回购👇\n💡 90%五黑含量，一口吃进5种黑色高钙营养\n✨ 0麸质0反式脂肪酸0白砂糖低钠配方，安全BUFF叠满\n🌟 儿童定制配方，特添加益生元、碳酸钙，高钙好吸收\n🌟 手工制作、现做现发（3天内生产）、短保新鲜\n配料：五黑（黑米、黑芝麻、黑藜麦、黑桑葚、黑枸杞）>90%、糯米、低聚果糖（益生元3%）、碳酸钙（1%）\n嘴馋的时候来一点，满足感有了，心里也不慌⭐\n💁‍♀️ 不管是宝妈还是单纯嘴馋党，这个都能拿捏\n真实测评不易，觉得有用点个赞⭐", "tags": "#小羊博士 #药食同源 #健康零食 #0添加 #真实测评 #零食测评 #好物测评 #益生元五黑高钙小脆饼"}, {"title": "胃胀、吃多了不消化、饭后不适的人，把这个山楂🌿", "body": "自从肠胃变娇气，我连零食都开始挑了🌿\n比起喝养生茶，我更想要一个嘴馋时也能安心吃的零食👇\n主角 → ✨山楂鸡内金消消焦饼✨（29.9/盒）\n一句话：薄如纸片、越嚼越香的养胃焦饼\n凭啥让我反复回购👇\n🌟 鸡内金是「鸡之黄金」，配山楂、陈皮，健脾养胃、缓解胀气\n💖 0蔗糖0油0色素0香精0防腐剂，好吃无负担\n✨ 手工制作、现做现发（3天内生产）、120天短保，新鲜纯净\n✨ 河南道地美食，薄如纸片、焦香酥脆，无限回购\n配料：小麦粉、全麦粉、山楂原浆、鸡内金、芝麻、陈皮、食用盐\n嘴馋的时候来一点，满足感有了，心里也不慌🌿\n💁‍♀️ 养胃党可以冲，自留、送人都合适\n养胃是细水长流的事，先码后看不迷路🌿", "tags": "#小羊博士 #药食同源 #健康零食 #0添加 #养胃种草 #养胃零食 #养胃 #鸡内金 #山楂鸡内金消消焦饼"}, {"title": "给爸妈囤点养胃的，比买保健品实在🍎｜新手友好", "body": "上次带回家一盒，结果被我妈夸了🍎\n给长辈选零食：要好嚼、要干净、要他们真的愿意吃👇\n主角 → ✨山楂鸡内金消消焦饼✨（29.9/盒）\n一句话：吃多了来两片的「消消焦饼」\n私心安利的理由👇\n🉑 鸡内金是「鸡之黄金」，配山楂、陈皮，健脾养胃、缓解胀气\n👉 0蔗糖0油0色素0香精0防腐剂，好吃无负担\n🉑 手工制作、现做现发（3天内生产）、120天短保，新鲜纯净\n✅ 河南道地美食，薄如纸片、焦香酥脆，无限回购\n配料：小麦粉、全麦粉、山楂原浆、鸡内金、芝麻、陈皮、食用盐\n焦香酥脆又养胃的小鸡饼，关键是大人小孩都能分着吃，囤着安心🍎\n💁‍♀️ 很适合养胃党，也适合想给家人挑点干净零食的人\n你都给爸妈买啥？评论区分享孝心清单🍎", "tags": "#小羊博士 #药食同源 #健康零食 #0添加 #孝心送父母 #送父母 #孝心好物 #长辈零食 #山楂鸡内金消消焦饼"}, {"title": "戒糖第30天，靠这个山药鸡内金酥酥焦饼撑过来的🥹", "body": "记录是为了提醒自己，也分享给同路的你🥹\n没有夸张的功效，只有真实的一点点变化👇\n主角 → ✨山药鸡内金酥酥焦饼✨（29.9/盒）\n一句话：健脾黄金三角做的酥脆焦饼\n划重点说说优点👇\n🔥 山药+茯苓+鸡内金，健脾养胃的黄金搭配\n👉 0蔗糖0油0色素0香精0防腐剂，好吃无负担\n👉 手工制作、现做现发（3天内生产）、120天短保\n👉 河南道地美食，薄如纸片、焦香酥脆，无限回购\n配料：小麦粉、全麦粉、山药、茯苓、鸡内金、芝麻、陈皮、食用盐\n回购好几次了，少了它零食抽屉总觉得空一块🥹\n💁‍♀️ 养胃党可以冲，自留、送人都合适\n你也在偷偷养生吗？评论区报到🥹", "tags": "#小羊博士 #药食同源 #健康零食 #0添加 #场景日记 #养生日记 #生活记录 #山药鸡内金酥酥焦饼"}];
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1300);}
+function cp(s){navigator.clipboard.writeText(s).then(()=>toast('已复制 ✅')).catch(()=>{const a=document.createElement('textarea');a.value=s;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();toast('已复制 ✅');});}
+document.querySelectorAll('[data-i]').forEach(b=>{b.addEventListener('click',()=>{const n=DATA[+b.dataset.i];const k=b.dataset.k;cp(k==='all'?(n.title+'\n\n'+n.body+'\n\n'+n.tags):n[k]);});});
+</script></body></html>
