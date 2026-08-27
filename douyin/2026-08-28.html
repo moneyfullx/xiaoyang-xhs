@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小羊博士 · 抖音口播 · 2026-08-28</title><style>
+:root{--red:#ff2442;--soft:#ffe8ec;--ink:#222;--muted:#9a9a9a;--line:#f0f0f0;}
+*{box-sizing:border-box;}
+body{margin:0;background:#faf7f5;color:var(--ink);
+ font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;}
+a{color:inherit;text-decoration:none;}
+header{background:linear-gradient(135deg,#ff2442,#ff6b81);color:#fff;padding:24px 20px;text-align:center;}
+header h1{margin:0;font-size:20px;}
+header p{margin:6px 0 0;font-size:13px;opacity:.92;}
+.wrap{max-width:680px;margin:0 auto;padding:18px;}
+.meta{font-size:12px;color:var(--muted);text-align:center;margin:10px 0 18px;}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:14px 0;}
+.nav a,.nav span{flex:1;text-align:center;font-size:13px;padding:9px 6px;border-radius:20px;
+ border:1px solid var(--line);background:#fff;}
+.nav a.cur{background:var(--red);color:#fff;border-color:var(--red);font-weight:700;}
+.nav span.disabled{color:#ccc;background:#f7f7f7;}
+/* 首页目录卡 */
+.daycard{display:block;background:#fff;border:1px solid var(--line);border-radius:14px;
+ padding:15px 16px;margin-bottom:13px;box-shadow:0 2px 8px rgba(0,0,0,.03);}
+.daycard .d{font-weight:700;font-size:15px;color:var(--red);}
+.daycard .w{font-size:12px;color:var(--muted);margin-left:6px;}
+.daycard .angles{font-size:12px;color:#666;margin-top:8px;line-height:1.7;}
+.daycard .chip{display:inline-block;background:var(--soft);color:#c0394f;border-radius:8px;
+ padding:1px 7px;margin:2px 4px 2px 0;font-size:11px;}
+/* 笔记卡 */
+.note{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:18px;overflow:hidden;
+ box-shadow:0 2px 10px rgba(0,0,0,.03);}
+.nhead{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;background:var(--soft);}
+.tag-angle{font-weight:700;color:var(--red);font-size:13px;}
+.tag-angle .num{background:var(--red);color:#fff;border-radius:10px;padding:1px 8px;margin-right:8px;font-size:12px;}
+.prod{font-size:12px;color:#b56;}
+.imglabel{font-size:11px;color:var(--muted);padding:12px 16px 0;}
+.imgstrip{display:flex;gap:10px;overflow-x:auto;padding:8px 16px 14px;-webkit-overflow-scrolling:touch;}
+.imgstrip a{flex:none;}
+.imgstrip img{height:220px;width:165px;object-fit:cover;border-radius:12px;border:1px solid #eee;
+ box-shadow:0 1px 4px rgba(0,0,0,.06);}
+.nbody{padding:16px;}
+.lbl{font-size:11px;color:var(--muted);margin:0 0 6px;display:flex;justify-content:space-between;align-items:center;}
+.title{font-size:16px;font-weight:700;line-height:1.45;margin-bottom:14px;}
+.content{font-size:14px;line-height:1.95;white-space:pre-wrap;background:#fcfbfa;border-radius:10px;padding:12px;}
+.tags{color:var(--red);font-size:13px;line-height:1.8;margin-top:12px;}
+.cover{font-size:12px;color:#888;background:#f6f6f6;border-radius:8px;padding:10px;margin-top:12px;}
+.cover b{color:#555;}
+.copy{border:1px solid var(--red);color:var(--red);background:#fff;font-size:12px;
+ padding:4px 12px;border-radius:13px;cursor:pointer;}
+.copy:active{background:var(--red);color:#fff;}
+.copyall{display:block;width:100%;margin-top:12px;background:var(--red);color:#fff;border:none;
+ padding:11px;border-radius:20px;font-size:14px;font-weight:700;cursor:pointer;}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#333;color:#fff;
+ padding:9px 18px;border-radius:18px;font-size:13px;opacity:0;transition:.25s;pointer-events:none;z-index:9;}
+.toast.show{opacity:1;}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:24px;}
+/* 手册页 */
+.banner{background:#fff7e6;border:1px solid #ffe0a3;color:#8a6d3b;border-radius:12px;
+ padding:12px 14px;font-size:12.5px;line-height:1.7;margin-bottom:18px;}
+.hb{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;
+ box-shadow:0 2px 8px rgba(0,0,0,.03);}
+.hb h3{margin:0 0 4px;font-size:16px;}
+.hb .alias{color:var(--red);font-size:12px;margin-bottom:10px;}
+.hb .seg{font-size:13px;line-height:1.75;margin:8px 0;}
+.hb .seg b{display:inline-block;min-width:64px;color:#999;font-weight:600;}
+.hb .pit{background:#fcfbfa;border-radius:8px;padding:8px 10px;font-size:12.5px;color:#555;
+ line-height:1.7;margin-top:4px;}
+.hbtable{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff;border-radius:12px;overflow:hidden;}
+.hbtable th,.hbtable td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;}
+.hbtable th{background:var(--soft);color:#c0394f;}
+.sec-title{font-size:15px;font-weight:700;margin:22px 0 12px;color:var(--ink);}
+.hblink{display:inline-block;background:var(--red);color:#fff;border-radius:18px;
+ padding:8px 16px;font-size:13px;font-weight:700;margin:4px 0 16px;}
+.mart{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:18px;}.mtitle{color:#111;font-size:19px;margin:0 0 12px;}.mart p{font-size:15px;line-height:1.9;margin:8px 0;}.mart .seg{color:#0aa;margin-top:14px;font-weight:700;}.mart blockquote{border-left:3px solid #0aa;background:#f0fbfb;margin:10px 0;padding:8px 12px;color:#066;border-radius:4px;}.mart hr{border:none;border-top:1px dashed var(--line);margin:14px 0;}</style></head><body>
+<header><h1>🎬 小羊博士 · 每日抖音口播</h1><p>2026-08-28 · 真人出镜脚本</p></header>
+<div class="wrap"><div class="nav"><a href="../days/2026-08-28.html">← 2026-08-28 当天10篇</a><a href="../index.html" class="cur">📅 内容存档</a></div>
+<article class="mart" id="art-1"><h2 class='mtitle'>为了让我家挑食娃好好吃饭，我踩过太多坑</h2>
+<p class='seg'><b>【0-3秒 · 钩子｜盯镜头，语气重一点】</b></p>
+<p>为了让我家挑食娃好好吃饭，我踩过太多坑。</p>
+<p class='seg'><b>【3-12秒 · 痛点+因果｜像跟你唠嗑】</b></p>
+<p>孩子越来越挑食、没胃口、饭含在嘴里，是不是？脾胃有点弱，别硬喂，先健脾开胃。这不是矫情，好多妈妈都遇到过。</p>
+<p class='seg'><b>【12-25秒 · 方法+产品｜边说边拿出来】</b></p>
+<p>其实办法老辈早就有了：山楂，酸甜开胃担当，老祖宗专门用来「消油腻肉食」，吃多了来两颗最对味；桑葚，花青素比蓝莓还高的「紫色宝藏」，酸甜好吃又抗氧化。</p>
+<p>你有空可以自己煮；没空呢，就选个干净的现成的，比如这个缤纷水果山楂棒棒糖，山楂含量≥47%的水果棒棒糖，更健康的解馋糖，配料就这几样：山楂≥47%、白砂糖、蓝莓≥10%、桑葚≥10%，19.9/盒。</p>
+<p class='seg'><b>【25-35秒 · 收尾+引导｜大白话收】</b></p>
+<p>记住一句话：给娃的零食，配料表越短越干净，越能放心。</p>
+<p>娃多大、啥情况，评论区打出来，我帮你看看该怎么吃；想要的直接点下面小黄车。</p>
+<hr>
+<blockquote>📹 拍摄：真人出镜、别念稿；手里拿产品/翻配料表做动作；前3秒必须先抛钩子。</blockquote>
+<blockquote>🏷 话题：#儿童积食 #宝宝磨牙 #健脾养胃 #药食同源 #缤纷水果山楂棒棒糖</blockquote>
+<blockquote>⚠️ 合规：只讲现象+食材传统功效，用“老辈常说/传统认为”，不承诺疗效、不确诊，严重情况提示就医。</blockquote></article><article class="mart" id="art-2"><h2 class='mtitle'>你以为在给娃吃健康零食，其实一直在喂糖</h2>
+<p class='seg'><b>【0-3秒 · 钩子｜盯镜头，语气重一点】</b></p>
+<p>你以为在给娃吃健康零食，其实一直在喂糖。</p>
+<p class='seg'><b>【3-12秒 · 痛点+因果｜像跟你唠嗑】</b></p>
+<p>孩子动不动就积食、肚子鼓鼓的，是不是？山楂消肉食、鸡内金消食、山药健脾，是老辈的开胃组合。这不是矫情，好多妈妈都遇到过。</p>
+<p class='seg'><b>【12-25秒 · 方法+产品｜边说边拿出来】</b></p>
+<p>其实办法老辈早就有了：鸡内金，传统消食健胃的「老把式」，鸡靠它研磨食物，主打一个帮你「消消食」；山楂，酸甜开胃担当，老祖宗专门用来「消油腻肉食」，吃多了来两颗最对味。</p>
+<p>你有空可以自己煮；没空呢，就选个干净的现成的，比如这个益生元苹果八珍丸，酸酸甜甜好开胃，软糯版的山楂八珍丸，配料就这几样：苹果、山楂、山药、红枣、陈皮、茯苓、鸡内金、麦芽、益生元，29.9/盒。</p>
+<p class='seg'><b>【25-35秒 · 收尾+引导｜大白话收】</b></p>
+<p>记住一句话：给娃的零食，配料表越短越干净，越能放心。</p>
+<p>娃多大、啥情况，评论区打出来，我帮你看看该怎么吃；想要的直接点下面小黄车。</p>
+<hr>
+<blockquote>📹 拍摄：真人出镜、别念稿；手里拿产品/翻配料表做动作；前3秒必须先抛钩子。</blockquote>
+<blockquote>🏷 话题：#儿童积食 #宝宝磨牙 #健脾养胃 #药食同源 #益生元苹果八珍丸</blockquote>
+<blockquote>⚠️ 合规：只讲现象+食材传统功效，用“老辈常说/传统认为”，不承诺疗效、不确诊，严重情况提示就医。</blockquote></article><article class="mart" id="art-3"><h2 class='mtitle'>别再追着喂饭了，你越急孩子越不吃</h2>
+<p class='seg'><b>【0-3秒 · 钩子｜盯镜头，语气重一点】</b></p>
+<p>别再追着喂饭了，你越急孩子越不吃。</p>
+<p class='seg'><b>【3-12秒 · 痛点+因果｜像跟你唠嗑】</b></p>
+<p>孩子大便干、几天不拉，是不是？肠胃没通畅，先从吃干净、吃好克化的开始。这不是矫情，好多妈妈都遇到过。</p>
+<p class='seg'><b>【12-25秒 · 方法+产品｜边说边拿出来】</b></p>
+<p>其实办法老辈早就有了：五黑（黑米·黑芝麻·黑藜麦·黑桑葚·黑枸杞），「黑色入肾」的五黑组合，花青素+钙+完全蛋白一口全包；黑芝麻，天然高钙小能手，香味也是它给的，比单纯加钙片更让人安心。</p>
+<p>你有空可以自己煮；没空呢，就选个干净的现成的，比如这个益生元五黑高钙小脆饼，90%五黑的高钙小脆饼，给娃补钙的零食，配料就这几样：五黑（黑米、黑芝麻、黑藜麦、黑桑葚、黑枸杞）&gt;90%、糯米、低聚果糖（益生元3%）、碳酸钙（1%），29.9/盒。</p>
+<p class='seg'><b>【25-35秒 · 收尾+引导｜大白话收】</b></p>
+<p>记住一句话：给娃的零食，配料表越短越干净，越能放心。</p>
+<p>娃多大、啥情况，评论区打出来，我帮你看看该怎么吃；想要的直接点下面小黄车。</p>
+<hr>
+<blockquote>📹 拍摄：真人出镜、别念稿；手里拿产品/翻配料表做动作；前3秒必须先抛钩子。</blockquote>
+<blockquote>🏷 话题：#儿童积食 #宝宝磨牙 #健脾养胃 #药食同源 #益生元五黑高钙小脆饼</blockquote>
+<blockquote>⚠️ 合规：只讲现象+食材传统功效，用“老辈常说/传统认为”，不承诺疗效、不确诊，严重情况提示就医。</blockquote></article><article class="mart" id="art-4"><h2 class='mtitle'>积食的孩子，脸上会写出来，教你一眼看出</h2>
+<p class='seg'><b>【0-3秒 · 钩子｜盯镜头，语气重一点】</b></p>
+<p>积食的孩子，脸上会写出来，教你一眼看出。</p>
+<p class='seg'><b>【3-12秒 · 痛点+因果｜像跟你唠嗑】</b></p>
+<p>孩子脸蛋黄黄的、长得比同龄矮小，是不是？老辈说脾胃是后天之本，脾胃养好了才吸收得好。这不是矫情，好多妈妈都遇到过。</p>
+<p class='seg'><b>【12-25秒 · 方法+产品｜边说边拿出来】</b></p>
+<p>其实办法老辈早就有了：山楂，酸甜开胃担当，老祖宗专门用来「消油腻肉食」，吃多了来两颗最对味；桑葚，花青素比蓝莓还高的「紫色宝藏」，酸甜好吃又抗氧化。</p>
+<p>你有空可以自己煮；没空呢，就选个干净的现成的，比如这个缤纷水果山楂棒棒糖，山楂含量≥47%的水果棒棒糖，更健康的解馋糖，配料就这几样：山楂≥47%、白砂糖、蓝莓≥10%、桑葚≥10%，19.9/盒。</p>
+<p class='seg'><b>【25-35秒 · 收尾+引导｜大白话收】</b></p>
+<p>记住一句话：给娃的零食，配料表越短越干净，越能放心。</p>
+<p>娃多大、啥情况，评论区打出来，我帮你看看该怎么吃；想要的直接点下面小黄车。</p>
+<hr>
+<blockquote>📹 拍摄：真人出镜、别念稿；手里拿产品/翻配料表做动作；前3秒必须先抛钩子。</blockquote>
+<blockquote>🏷 话题：#儿童积食 #宝宝磨牙 #健脾养胃 #药食同源 #缤纷水果山楂棒棒糖</blockquote>
+<blockquote>⚠️ 合规：只讲现象+食材传统功效，用“老辈常说/传统认为”，不承诺疗效、不确诊，严重情况提示就医。</blockquote></article><article class="mart" id="art-5"><h2 class='mtitle'>一句话教你挑娃的零食：翻到背面，念得出的才买</h2>
+<p class='seg'><b>【0-3秒 · 钩子｜盯镜头，语气重一点】</b></p>
+<p>一句话教你挑娃的零食：翻到背面，念得出的才买。</p>
+<p class='seg'><b>【3-12秒 · 痛点+因果｜像跟你唠嗑】</b></p>
+<p>孩子晚上睡觉磨牙、翻来覆去，是不是？老辈常说这是肚里有积食，脾胃没顺开，睡就不踏实。这不是矫情，好多妈妈都遇到过。</p>
+<p class='seg'><b>【12-25秒 · 方法+产品｜边说边拿出来】</b></p>
+<p>其实办法老辈早就有了：鸡内金，传统消食健胃的「老把式」，鸡靠它研磨食物，主打一个帮你「消消食」；山楂，酸甜开胃担当，老祖宗专门用来「消油腻肉食」，吃多了来两颗最对味。</p>
+<p>你有空可以自己煮；没空呢，就选个干净的现成的，比如这个益生元苹果八珍丸，酸酸甜甜好开胃，软糯版的山楂八珍丸，配料就这几样：苹果、山楂、山药、红枣、陈皮、茯苓、鸡内金、麦芽、益生元，29.9/盒。</p>
+<p class='seg'><b>【25-35秒 · 收尾+引导｜大白话收】</b></p>
+<p>记住一句话：给娃的零食，配料表越短越干净，越能放心。</p>
+<p>娃多大、啥情况，评论区打出来，我帮你看看该怎么吃；想要的直接点下面小黄车。</p>
+<hr>
+<blockquote>📹 拍摄：真人出镜、别念稿；手里拿产品/翻配料表做动作；前3秒必须先抛钩子。</blockquote>
+<blockquote>🏷 话题：#儿童积食 #宝宝磨牙 #健脾养胃 #药食同源 #益生元苹果八珍丸</blockquote>
+<blockquote>⚠️ 合规：只讲现象+食材传统功效，用“老辈常说/传统认为”，不承诺疗效、不确诊，严重情况提示就医。</blockquote></article></div><footer>由小羊博士抖音口播生成器自动产出 · 拍前请人工过一遍合规</footer></body></html>
